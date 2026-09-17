@@ -28,10 +28,10 @@ export const MapLayerControls: React.FC<MapLayerControlsProps> = ({
         <button
           id="layer-all-btn"
           onClick={() => handleLayerClick('all')}
-          className={`px-2.5 py-1 rounded text-xs transition-colors cursor-pointer ${
+          className={`px-2.5 py-1 text-xs transition-colors cursor-pointer border ${
             activeLayer === 'all'
-              ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
-              : 'bg-slate-800 text-slate-400 hover:text-slate-200'
+              ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
+              : 'bg-[#010613] text-slate-400 hover:text-slate-200 border-[#1e293b]'
           }`}
         >
           Todas as Camadas
@@ -39,10 +39,10 @@ export const MapLayerControls: React.FC<MapLayerControlsProps> = ({
         <button
           id="layer-routes-btn"
           onClick={() => handleLayerClick('routes')}
-          className={`px-2.5 py-1 rounded text-xs transition-colors cursor-pointer ${
+          className={`px-2.5 py-1 text-xs transition-colors cursor-pointer border ${
             activeLayer === 'routes'
-              ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
-              : 'bg-slate-800 text-slate-400 hover:text-slate-200'
+              ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40'
+              : 'bg-[#010613] text-slate-400 hover:text-slate-200 border-[#1e293b]'
           }`}
         >
           Rotas para Sado
@@ -50,10 +50,10 @@ export const MapLayerControls: React.FC<MapLayerControlsProps> = ({
         <button
           id="layer-hazards-btn"
           onClick={() => handleLayerClick('hazards')}
-          className={`px-2.5 py-1 rounded text-xs transition-colors cursor-pointer ${
+          className={`px-2.5 py-1 text-xs transition-colors cursor-pointer border ${
             activeLayer === 'hazards'
-              ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40'
-              : 'bg-slate-800 text-slate-400 hover:text-slate-200'
+              ? 'bg-rose-500/20 text-rose-300 border-rose-500/40'
+              : 'bg-[#010613] text-slate-400 hover:text-slate-200 border-[#1e293b]'
           }`}
         >
           Zonas de Risco

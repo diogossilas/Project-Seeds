@@ -5,7 +5,7 @@ export const TelemetryGauges: React.FC = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {/* Gauge 1: Índice de Cooperação Intergrupal */}
-      <div className="bg-[#0d131f] border border-slate-800 rounded-2xl p-5 relative overflow-hidden shadow-lg">
+      <div className="bg-[#030914] border border-[#0e2a4a] rounded-2xl p-5 relative overflow-hidden shadow-lg">
         <div className="flex items-center justify-between text-xs font-mono-code text-slate-400 mb-3">
           <span className="flex items-center gap-1 text-emerald-400">
             <TrendingUp className="w-3.5 h-3.5" /> Cooperação Biocêntrica
@@ -35,13 +35,13 @@ export const TelemetryGauges: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="text-[11px] text-slate-400 text-center mt-2 border-t border-slate-800/80 pt-2">
+        <div className="text-[11px] text-slate-400 text-center mt-2 border-t border-[#0e2a4a]/80 pt-2">
           Aliança das 5 equipes consumada na Arca de Sado.
         </div>
       </div>
 
       {/* Gauge 2: Regeneração da Biosfera */}
-      <div className="bg-[#0d131f] border border-slate-800 rounded-2xl p-5 relative overflow-hidden shadow-lg">
+      <div className="bg-[#030914] border border-[#0e2a4a] rounded-2xl p-5 relative overflow-hidden shadow-lg">
         <div className="flex items-center justify-between text-xs font-mono-code text-slate-400 mb-3">
           <span className="flex items-center gap-1 text-cyan-400">
             <Activity className="w-3.5 h-3.5" /> Regeneração Botânica
@@ -71,13 +71,13 @@ export const TelemetryGauges: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="text-[11px] text-slate-400 text-center mt-2 border-t border-slate-800/80 pt-2">
+        <div className="text-[11px] text-slate-400 text-center mt-2 border-t border-[#0e2a4a]/80 pt-2">
           Banco de sementes da 8ª Arca disseminado livremente.
         </div>
       </div>
 
       {/* Gauge 3: Radiação & Ameaça Residual */}
-      <div className="bg-[#0d131f] border border-slate-800 rounded-2xl p-5 relative overflow-hidden shadow-lg">
+      <div className="bg-[#030914] border border-[#0e2a4a] rounded-2xl p-5 relative overflow-hidden shadow-lg">
         <div className="flex items-center justify-between text-xs font-mono-code text-slate-400 mb-3">
           <span className="flex items-center gap-1 text-rose-400">
             <AlertOctagon className="w-3.5 h-3.5" /> Radiação Pós-Meteoro
@@ -107,13 +107,13 @@ export const TelemetryGauges: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="text-[11px] text-slate-400 text-center mt-2 border-t border-slate-800/80 pt-2">
+        <div className="text-[11px] text-slate-400 text-center mt-2 border-t border-[#0e2a4a]/80 pt-2">
           Decaimento isotópico concluído; ar respirável.
         </div>
       </div>
 
       {/* Gauge 4: Desativação do Autômato Estatal */}
-      <div className="bg-[#0d131f] border border-slate-800 rounded-2xl p-5 relative overflow-hidden shadow-lg">
+      <div className="bg-[#030914] border border-[#0e2a4a] rounded-2xl p-5 relative overflow-hidden shadow-lg">
         <div className="flex items-center justify-between text-xs font-mono-code text-slate-400 mb-3">
           <span className="flex items-center gap-1 text-amber-400">
             <Cpu className="w-3.5 h-3.5" /> IA Militar Governamental
@@ -143,7 +143,7 @@ export const TelemetryGauges: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="text-[11px] text-slate-400 text-center mt-2 border-t border-slate-800/80 pt-2">
+        <div className="text-[11px] text-slate-400 text-center mt-2 border-t border-[#0e2a4a]/80 pt-2">
           Protocolo de mísseis abortado; hardware reaproveitado.
         </div>
       </div>

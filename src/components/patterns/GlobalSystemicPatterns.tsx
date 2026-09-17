@@ -29,7 +29,7 @@ export const GlobalSystemicPatterns: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="bg-[#0d131f] border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-xl">
+      <div className="bg-[#030914] border border-[#0e2a4a] rounded-2xl p-5 sm:p-6 shadow-xl">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 flex-wrap">
@@ -51,7 +51,7 @@ export const GlobalSystemicPatterns: React.FC = () => {
           </div>
 
           {/* Sub-tab switcher */}
-          <div className="flex items-center gap-1.5 bg-[#080d16] p-1 rounded-xl border border-slate-700/80 shrink-0 self-start sm:self-auto">
+          <div className="flex items-center gap-1.5 bg-[#020610] p-1 rounded-xl border border-[#0d223a] shrink-0 self-start sm:self-auto">
             <button
               onClick={() => {
                 audioService.playNodeSelect();
@@ -103,8 +103,8 @@ export const GlobalSystemicPatterns: React.FC = () => {
                   }}
                   className={`p-4 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between ${
                     isSelected
-                      ? 'bg-[#0e182a] border-emerald-500/60 shadow-lg shadow-emerald-500/5 ring-1 ring-emerald-500/30'
-                      : 'bg-[#090f1a] border-slate-800 hover:border-slate-700 hover:bg-[#0c1422]'
+                      ? 'bg-[#061426] border-emerald-500/60 shadow-lg shadow-emerald-500/5 ring-1 ring-emerald-500/30'
+                      : 'bg-[#040d1a] border-[#0e2a4a] hover:border-[#0e2a4a] hover:bg-[#071830]'
                   }`}
                 >
                   <div className="flex items-center justify-between gap-2 mb-2">
@@ -125,8 +125,8 @@ export const GlobalSystemicPatterns: React.FC = () => {
           </div>
 
           {/* Active Law Deep Dive Box */}
-          <div className="bg-[#0b1220] border border-slate-800 rounded-2xl p-6 shadow-xl space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-800">
+          <div className="bg-[#030a17] border border-[#0e2a4a] rounded-2xl p-6 shadow-xl space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#0e2a4a]">
               <div>
                 <span className="text-xs font-mono-code text-emerald-400 font-bold uppercase">
                   POSTULADO TRANSVERSAL • LEI 0{currentLaw.number}
@@ -140,7 +140,7 @@ export const GlobalSystemicPatterns: React.FC = () => {
               </div>
 
               {/* Metric Indicator Pill */}
-              <div className="bg-[#080d16] border border-slate-700 rounded-xl p-3 flex items-center gap-4 shrink-0">
+              <div className="bg-[#020610] border border-[#0e2a4a] rounded-xl p-3 flex items-center gap-4 shrink-0">
                 <div>
                   <div className="text-[10px] font-mono-code text-slate-400 uppercase">
                     {currentLaw.metricComparison.labelA}
@@ -162,7 +162,7 @@ export const GlobalSystemicPatterns: React.FC = () => {
             </div>
 
             {/* Central Thesis */}
-            <div className="bg-slate-900/80 border border-slate-700/80 rounded-xl p-4 sm:p-5">
+            <div className="bg-slate-900/80 border border-[#0d223a] rounded-xl p-4 sm:p-5">
               <div className="text-xs font-mono-code text-cyan-400 uppercase font-bold mb-1.5 flex items-center gap-1.5">
                 <FileText className="w-3.5 h-3.5" />
                 <span>TESE FUNDAMENTAL DA ANÁLISE SISTÊMICA</span>
@@ -181,7 +181,7 @@ export const GlobalSystemicPatterns: React.FC = () => {
                 {currentLaw.keyCases.map((cs, idx) => (
                   <div 
                     key={idx}
-                    className="bg-[#080d16] border border-slate-800 rounded-xl p-4 space-y-2 hover:border-slate-700 transition-colors"
+                    className="bg-[#020610] border border-[#0e2a4a] rounded-xl p-4 space-y-2 hover:border-[#0e2a4a] transition-colors"
                   >
                     <div className="flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-emerald-400" />
@@ -192,7 +192,7 @@ export const GlobalSystemicPatterns: React.FC = () => {
                     <p className="text-xs text-slate-300 leading-relaxed">
                       <strong className="text-slate-400">Ocorrência:</strong> {cs.caseStudy}
                     </p>
-                    <div className="pt-1 text-xs text-emerald-300 font-sans border-t border-slate-800/80">
+                    <div className="pt-1 text-xs text-emerald-300 font-sans border-t border-[#0e2a4a]/80">
                       <strong className="text-emerald-400 font-mono-code">Resolução:</strong> {cs.outcome}
                     </div>
                   </div>
@@ -218,8 +218,8 @@ export const GlobalSystemicPatterns: React.FC = () => {
         /* SUCCESSION STAGES & CONTINUUM MODULE */
         <div className="space-y-6">
           {/* 3 Step Flow Diagram */}
-          <div className="bg-[#0d131f] border border-slate-800 rounded-2xl p-6 shadow-xl">
-            <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-800">
+          <div className="bg-[#030914] border border-[#0e2a4a] rounded-2xl p-6 shadow-xl">
+            <div className="flex items-center justify-between mb-4 pb-2 border-b border-[#0e2a4a]">
               <div>
                 <span className="text-xs font-mono-code uppercase text-cyan-400 font-semibold">
                   ANÁLISE DE CADEIA SUCESSÓRIA
@@ -263,12 +263,12 @@ export const GlobalSystemicPatterns: React.FC = () => {
                       {stage.subhead}
                     </div>
 
-                    <p className="text-xs text-slate-300 leading-relaxed bg-slate-950/40 p-3 rounded-xl border border-slate-800/80 mb-3">
+                    <p className="text-xs text-slate-300 leading-relaxed bg-slate-950/40 p-3 rounded-xl border border-[#0e2a4a]/80 mb-3">
                       {stage.description}
                     </p>
                   </div>
 
-                  <div className="pt-3 border-t border-slate-800/80 text-[11px] font-mono-code text-slate-400">
+                  <div className="pt-3 border-t border-[#0e2a4a]/80 text-[11px] font-mono-code text-slate-400">
                     <span className="text-slate-500">Agentes:</span> {stage.actors}
                   </div>
                 </div>
@@ -277,8 +277,8 @@ export const GlobalSystemicPatterns: React.FC = () => {
           </div>
 
           {/* Continuum Timeline */}
-          <div className="bg-[#0d131f] border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div className="bg-[#030914] border border-[#0e2a4a] rounded-2xl p-6 shadow-xl space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-[#0e2a4a]">
               <div>
                 <span className="text-xs font-mono-code text-emerald-400 uppercase font-semibold">
                   HISTORIOGRAFIA EM CINCO ATOS
@@ -303,7 +303,7 @@ export const GlobalSystemicPatterns: React.FC = () => {
                     className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                       isSelected
                         ? 'bg-emerald-500/20 border-emerald-500 text-white font-bold'
-                        : 'bg-[#090d16] border-slate-800 text-slate-400 hover:text-slate-200'
+                        : 'bg-[#020610] border-[#0e2a4a] text-slate-400 hover:text-slate-200'
                     }`}
                   >
                     <div className="text-[10px] font-mono-code uppercase text-emerald-400">
@@ -319,7 +319,7 @@ export const GlobalSystemicPatterns: React.FC = () => {
 
             {/* Selected Phase Detail */}
             {CONTINUUM_PHASES[activePhaseIdx] && (
-              <div className="bg-[#080d16] border border-slate-800 rounded-xl p-5 space-y-3">
+              <div className="bg-[#020610] border border-[#0e2a4a] rounded-xl p-5 space-y-3">
                 <div className="flex items-center justify-between">
                   <div>
                     <span className="text-xs font-mono-code text-slate-400">
@@ -338,7 +338,7 @@ export const GlobalSystemicPatterns: React.FC = () => {
                   {CONTINUUM_PHASES[activePhaseIdx].description}
                 </p>
 
-                <div className="pt-2 border-t border-slate-800/80">
+                <div className="pt-2 border-t border-[#0e2a4a]/80">
                   <span className="text-xs font-mono-code text-cyan-400 font-bold block mb-1.5">
                     EVENTOS CHAVE DESTE PERÍODO:
                   </span>

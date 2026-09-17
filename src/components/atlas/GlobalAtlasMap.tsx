@@ -27,15 +27,17 @@ interface GlobalAtlasMapProps {
   onSelectTeam: (team: TeamData) => void;
   selectedTeam: TeamData | null;
   onNavigateToTab: (tab: 'table' | 'telemetry' | '3d' | 'patterns') => void;
+  onOpenForensicModal?: (seedId?: string) => void;
 }
 
 export const GlobalAtlasMap: React.FC<GlobalAtlasMapProps> = ({
   onSelectTeam,
   selectedTeam,
   onNavigateToTab,
+  onOpenForensicModal,
 }) => {
   const [viewScope, setViewScope] = useState<'global' | 'japan'>('global');
-  const [mapEra, setMapEra] = useState<MapEraMode>('post_impact');
+  const [mapEra, setMapEra] = useState<'pre_impact' | 'post_impact'>('post_impact');
   const [selectedProgram, setSelectedProgram] = useState<GlobalProgramData>(GLOBAL_PROGRAMS_DATA[0]);
   const [showBiomeOverlay, setShowBiomeOverlay] = useState(true);
   const [showTransoceanicVectors, setShowTransoceanicVectors] = useState(true);
@@ -63,11 +65,11 @@ export const GlobalAtlasMap: React.FC<GlobalAtlasMapProps> = ({
   return (
     <div className="space-y-6">
       {/* Top Tactical Briefing & Theater Switch */}
-      <div className="rounded-2xl bg-[#0d1422] border border-slate-800 p-4 sm:p-5 shadow-lg">
+      <div className="bg-[#050b14] border border-[#1e293b] p-4 sm:p-5 shadow-lg">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="px-2.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono-code font-bold flex items-center gap-1.5">
+              <span className="px-2.5 py-0.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono-code font-bold flex items-center gap-1.5">
                 <Globe2 className="w-3.5 h-3.5" />
                 <span>ATLAS PLANETÁRIO DO PROTOCOLO SEEDS</span>
               </span>
@@ -88,13 +90,13 @@ export const GlobalAtlasMap: React.FC<GlobalAtlasMapProps> = ({
           </div>
 
           {/* Scope Toggle: Global Atlas vs Japan Archipelago Theater */}
-          <div className="flex items-center gap-1.5 bg-[#080d16] p-1.5 rounded-xl border border-slate-700/80 shrink-0 self-start sm:self-auto">
+          <div className="flex items-center gap-1.5 bg-[#010613] p-1.5 border border-[#1e293b] shrink-0 self-start sm:self-auto">
             <button
               onClick={() => handleScopeChange('global')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono-code font-bold transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono-code font-bold transition-all cursor-pointer ${
                 viewScope === 'global'
                   ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 shadow'
-                  : 'text-slate-400 hover:text-slate-200'
+                  : 'text-slate-400 hover:text-slate-200 border border-transparent'
               }`}
             >
               <Globe2 className="w-3.5 h-3.5" />
@@ -103,10 +105,10 @@ export const GlobalAtlasMap: React.FC<GlobalAtlasMapProps> = ({
 
             <button
               onClick={() => handleScopeChange('japan')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono-code font-bold transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono-code font-bold transition-all cursor-pointer ${
                 viewScope === 'japan'
                   ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow'
-                  : 'text-slate-400 hover:text-slate-200'
+                  : 'text-slate-400 hover:text-slate-200 border border-transparent'
               }`}
             >
               <Compass className="w-3.5 h-3.5" />
@@ -117,26 +119,26 @@ export const GlobalAtlasMap: React.FC<GlobalAtlasMapProps> = ({
 
         {/* Global Key Metrics Bar */}
         {viewScope === 'global' && (
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 mt-4 pt-4 border-t border-slate-800">
-            <div className="bg-[#090d16] border border-slate-700/80 rounded-lg p-2.5 sm:p-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 mt-4 pt-4 border-t border-[#1e293b]">
+            <div className="bg-[#010613] border border-[#1e293b] p-2.5 sm:p-3">
               <div className="text-[10px] font-mono-code uppercase text-slate-400">Programas Globais</div>
               <div className="text-xl sm:text-2xl font-bold font-mono-code text-emerald-400">11 Frentes</div>
               <div className="text-[10px] text-emerald-300 font-sans mt-0.5">10 Continentais + 1 Lunar</div>
             </div>
 
-            <div className="bg-[#090d16] border border-slate-700/80 rounded-lg p-2.5 sm:p-3">
+            <div className="bg-[#010613] border border-[#1e293b] p-2.5 sm:p-3">
               <div className="text-[10px] font-mono-code uppercase text-slate-400">Falência de IAs</div>
               <div className="text-xl sm:text-2xl font-bold font-mono-code text-rose-400">100% Queda</div>
               <div className="text-[10px] text-rose-300 font-sans mt-0.5">Desativação / Eutanásia</div>
             </div>
 
-            <div className="bg-[#090d16] border border-slate-700/80 rounded-lg p-2.5 sm:p-3">
+            <div className="bg-[#010613] border border-[#1e293b] p-2.5 sm:p-3">
               <div className="text-[10px] font-mono-code uppercase text-slate-400">Saber Tradicional</div>
               <div className="text-xl sm:text-2xl font-bold font-mono-code text-cyan-400">92.4% Índice</div>
               <div className="text-[10px] text-cyan-300 font-sans mt-0.5">Fator de Regeneração</div>
             </div>
 
-            <div className="bg-[#090d16] border border-slate-700/80 rounded-lg p-2.5 sm:p-3">
+            <div className="bg-[#010613] border border-[#1e293b] p-2.5 sm:p-3">
               <div className="text-[10px] font-mono-code uppercase text-slate-400">Modelo Político</div>
               <div className="text-xl sm:text-2xl font-bold font-mono-code text-amber-400">Clãs &amp; Tribos</div>
               <div className="text-[10px] text-amber-300 font-sans mt-0.5">Descentralização Total</div>
@@ -155,7 +157,7 @@ export const GlobalAtlasMap: React.FC<GlobalAtlasMapProps> = ({
       ) : (
         <div className="space-y-6">
           {/* Quick Filters Bar */}
-          <div className="bg-[#0b1220] border border-slate-800 rounded-xl p-3.5 flex flex-wrap items-center justify-between gap-3 text-xs font-mono-code">
+          <div className="bg-[#050b14] border border-[#1e293b] p-3.5 flex flex-wrap items-center justify-between gap-3 text-xs font-mono-code">
             <div className="flex items-center gap-2 flex-wrap">
               <span className="text-slate-400 uppercase text-[11px] font-bold flex items-center gap-1">
                 <Filter className="w-3.5 h-3.5 text-emerald-400" />
@@ -164,7 +166,7 @@ export const GlobalAtlasMap: React.FC<GlobalAtlasMapProps> = ({
               <select
                 value={filterBiome}
                 onChange={(e) => setFilterBiome(e.target.value)}
-                className="bg-[#070b14] text-slate-200 border border-slate-700 rounded-lg px-2.5 py-1 text-xs outline-none focus:border-emerald-500"
+                className="bg-[#010613] text-slate-200 border border-[#1e293b] px-2.5 py-1 text-xs outline-none focus:border-emerald-500"
               >
                 {biomes.map((b) => (
                   <option key={b.id} value={b.id}>{b.label}</option>
@@ -178,7 +180,7 @@ export const GlobalAtlasMap: React.FC<GlobalAtlasMapProps> = ({
                   type="checkbox"
                   checked={showBiomeOverlay}
                   onChange={(e) => setShowBiomeOverlay(e.target.checked)}
-                  className="rounded border-slate-700 text-emerald-500 focus:ring-0"
+                  className="border-[#1e293b] bg-[#010613] text-emerald-500 focus:ring-0"
                 />
                 <span>Biomas de Ruptura</span>
               </label>
@@ -188,7 +190,7 @@ export const GlobalAtlasMap: React.FC<GlobalAtlasMapProps> = ({
                   type="checkbox"
                   checked={showTransoceanicVectors}
                   onChange={(e) => setShowTransoceanicVectors(e.target.checked)}
-                  className="rounded border-slate-700 text-cyan-500 focus:ring-0"
+                  className="border-[#1e293b] bg-[#010613] text-cyan-500 focus:ring-0"
                 />
                 <span>Vetores Transoceânicos</span>
               </label>
@@ -203,6 +205,7 @@ export const GlobalAtlasMap: React.FC<GlobalAtlasMapProps> = ({
             showTransoceanicVectors={showTransoceanicVectors}
             filterBiome={filterBiome}
             initialEra={mapEra}
+            onOpenForensicModal={onOpenForensicModal}
           />
 
           {/* Quick Program Selector Chips (Row of Continental Buttons) */}
@@ -219,17 +222,17 @@ export const GlobalAtlasMap: React.FC<GlobalAtlasMapProps> = ({
                     audioService.playNodeSelect();
                     setSelectedProgram(prog);
                   }}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-mono-code whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer border ${
+                  className={`px-3 py-1.5 text-xs font-mono-code whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer border ${
                     isSelected
-                      ? 'bg-slate-800 text-white border-emerald-500 font-bold shadow-md'
-                      : 'bg-slate-900/60 text-slate-400 hover:text-slate-200 border-slate-800 hover:border-slate-700'
+                      ? 'bg-[#050b14] text-white border-emerald-500 font-bold shadow-md'
+                      : 'bg-[#010613] text-slate-400 hover:text-slate-200 border-[#1e293b] hover:border-[#334155]'
                   }`}
                   style={{
                     borderColor: isSelected ? prog.color : undefined,
                   }}
                 >
                   <span 
-                    className="w-2 h-2 rounded-full" 
+                    className="w-2 h-2" 
                     style={{ backgroundColor: prog.color }}
                   />
                   <span>{prog.regionShort}</span>

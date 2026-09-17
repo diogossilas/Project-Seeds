@@ -50,9 +50,9 @@ export const GlobalTelemetryHeatmap: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#0d131f] border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col">
+    <div className="bg-[#030914] border border-[#0e2a4a] rounded-2xl p-6 shadow-xl flex flex-col">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-[#0e2a4a]">
         <div>
           <div className="flex items-center gap-2">
             <span className="px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 text-[10px] font-mono-code font-bold uppercase flex items-center gap-1">
@@ -71,7 +71,7 @@ export const GlobalTelemetryHeatmap: React.FC = () => {
         {/* Color Legend Bar */}
         <div className="flex items-center gap-2 font-mono-code text-[11px] text-slate-400 self-start sm:self-auto">
           <span>0 (Baixo)</span>
-          <div className="flex h-3 w-32 rounded overflow-hidden border border-slate-700">
+          <div className="flex h-3 w-32 rounded overflow-hidden border border-[#0e2a4a]">
             <div className="flex-1 bg-yellow-300" />
             <div className="flex-1 bg-amber-400" />
             <div className="flex-1 bg-orange-500" />
@@ -87,10 +87,10 @@ export const GlobalTelemetryHeatmap: React.FC = () => {
       </p>
 
       {/* Heatmap Interactive Table */}
-      <div className="overflow-x-auto rounded-xl border border-slate-800/80 bg-[#080d16]">
+      <div className="overflow-x-auto rounded-xl border border-[#0e2a4a]/80 bg-[#020610]">
         <table className="w-full text-left font-mono-code text-xs border-collapse">
           <thead>
-            <tr className="border-b border-slate-800 bg-slate-900/80 text-slate-300">
+            <tr className="border-b border-[#0e2a4a] bg-slate-900/80 text-slate-300">
               <th className="p-3 font-semibold">
                 <button
                   onClick={() => handleSort('facility')}
@@ -141,7 +141,7 @@ export const GlobalTelemetryHeatmap: React.FC = () => {
                   key={item.facility}
                   id={`heatmap-row-${item.facility.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
                   className={`transition-colors cursor-pointer ${
-                    isSelected ? 'bg-slate-800/90' : 'hover:bg-slate-900/60'
+                    isSelected ? 'bg-[#050e1c]/90' : 'hover:bg-slate-900/60'
                   }`}
                   onClick={() => {
                     audioService.playNodeSelect();
@@ -194,8 +194,8 @@ export const GlobalTelemetryHeatmap: React.FC = () => {
 
       {/* Selected Facility Deep Dive */}
       {selectedFacility && (
-        <div className="mt-4 p-4 rounded-xl bg-slate-900 border border-slate-700/80 animate-fade-in font-mono-code text-xs">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-2 mb-2">
+        <div className="mt-4 p-4 rounded-xl bg-slate-900 border border-[#0d223a] animate-fade-in font-mono-code text-xs">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#0e2a4a] pb-2 mb-2">
             <div className="flex items-center gap-2">
               <ShieldAlert className="w-4 h-4 text-amber-400" />
               <span className="font-bold text-white text-sm">{selectedFacility.facility}</span>
@@ -210,7 +210,7 @@ export const GlobalTelemetryHeatmap: React.FC = () => {
             {HEATMAP_METRIC_KEYS.map((m) => {
               const val = selectedFacility[m.key as keyof GlobalFacilityVulnerability] as number;
               return (
-                <div key={m.key} className="bg-slate-950/60 p-2 rounded-lg border border-slate-800">
+                <div key={m.key} className="bg-slate-950/60 p-2 rounded-lg border border-[#0e2a4a]">
                   <div className="text-slate-400 text-[10px] truncate">{m.label}</div>
                   <div className="text-lg font-bold mt-0.5" style={{ color: getSeverityHex(val) }}>
                     {val} / 10

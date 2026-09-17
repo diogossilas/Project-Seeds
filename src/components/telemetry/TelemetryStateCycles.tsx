@@ -12,9 +12,9 @@ export const TelemetryStateCycles: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#0d131f] border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between h-full">
+    <div className="bg-[#030914] border border-[#0e2a4a] rounded-2xl p-6 shadow-xl flex flex-col justify-between h-full">
       <div>
-        <div className="flex items-center justify-between mb-3 pb-2 border-b border-slate-800">
+        <div className="flex items-center justify-between mb-3 pb-2 border-b border-[#0e2a4a]">
           <h3 className="text-sm font-bold font-mono-code uppercase text-cyan-400 flex items-center gap-1.5">
             <Clock className="w-4 h-4 text-cyan-400" />
             Ciclos e Estados Discretos
@@ -36,8 +36,8 @@ export const TelemetryStateCycles: React.FC = () => {
                 onClick={() => handleSelectEvent(evt.id)}
                 className={`p-2.5 rounded-xl border transition-all cursor-pointer text-xs ${
                   isSelected
-                    ? 'bg-slate-800/90 border-cyan-500/50 shadow-md'
-                    : 'bg-slate-900/50 border-slate-800 hover:border-slate-700'
+                    ? 'bg-[#050e1c]/90 border-cyan-500/50 shadow-md'
+                    : 'bg-slate-900/50 border-[#0e2a4a] hover:border-[#0e2a4a]'
                 }`}
               >
                 <div className="flex items-center justify-between mb-1">
@@ -68,7 +68,7 @@ export const TelemetryStateCycles: React.FC = () => {
         </div>
       </div>
 
-      <div className="pt-3 border-t border-slate-800 text-[11px] text-slate-500 font-mono-code text-center">
+      <div className="pt-3 border-t border-[#0e2a4a] text-[11px] text-slate-500 font-mono-code text-center">
         Clique no evento para inspeção cronológica.
       </div>
     </div>

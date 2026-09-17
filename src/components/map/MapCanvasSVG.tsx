@@ -30,6 +30,7 @@ export const MapCanvasSVG: React.FC<MapCanvasSVGProps> = ({
   const [zoom, setZoom] = useState<number>(1.0);
   const [center, setCenter] = useState<{ x: number; y: number }>({ x: 50, y: 50 });
   const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [mousePos, setMousePos] = useState<{ x: number, y: number }>({ x: 0, y: 0 });
   const dragStartRef = useRef<{ clientX: number; clientY: number; startCenter: { x: number; y: number } }>({
     clientX: 0,
     clientY: 0,
@@ -97,6 +98,8 @@ export const MapCanvasSVG: React.FC<MapCanvasSVGProps> = ({
   const handleMouseDown = (e: React.MouseEvent) => {
     if (e.button !== 0) return;
     setIsDragging(true);
+    
+    // Use CTM for exact starting center
     dragStartRef.current = {
       clientX: e.clientX,
       clientY: e.clientY,
@@ -105,19 +108,26 @@ export const MapCanvasSVG: React.FC<MapCanvasSVGProps> = ({
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
+    // Record raw mouse coordinates for the floating tooltip
+    setMousePos({ x: e.clientX, y: e.clientY });
+
     if (!isDragging || !containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const dx = e.clientX - dragStartRef.current.clientX;
-    const dy = e.clientY - dragStartRef.current.clientY;
+    
+    const svgElement = containerRef.current.querySelector('svg');
+    if (!svgElement) return;
+
+    const ctm = svgElement.getScreenCTM();
+    if (!ctm) return;
+
+    // Use CTM to convert raw screen movement to SVG units
+    const dx = (e.clientX - dragStartRef.current.clientX) / ctm.a;
+    const dy = (e.clientY - dragStartRef.current.clientY) / ctm.d;
 
     const viewBoxWidth = 100 / zoom;
     const viewBoxHeight = 100 / zoom;
 
-    const svgDx = (dx / rect.width) * viewBoxWidth;
-    const svgDy = (dy / rect.height) * viewBoxHeight;
-
-    const newCenterX = Math.max(viewBoxWidth / 2, Math.min(100 - viewBoxWidth / 2, dragStartRef.current.startCenter.x - svgDx));
-    const newCenterY = Math.max(viewBoxHeight / 2, Math.min(100 - viewBoxHeight / 2, dragStartRef.current.startCenter.y - svgDy));
+    const newCenterX = Math.max(viewBoxWidth / 2, Math.min(100 - viewBoxWidth / 2, dragStartRef.current.startCenter.x - dx));
+    const newCenterY = Math.max(viewBoxHeight / 2, Math.min(100 - viewBoxHeight / 2, dragStartRef.current.startCenter.y - dy));
 
     setCenter({ x: newCenterX, y: newCenterY });
   };
@@ -165,6 +175,14 @@ export const MapCanvasSVG: React.FC<MapCanvasSVGProps> = ({
   const vbHeight = 100 / zoom;
   const vbX = Math.max(0, Math.min(100 - vbWidth, center.x - vbWidth / 2));
   const vbY = Math.max(0, Math.min(100 - vbHeight, center.y - vbHeight / 2));
+
+  // Helper for HUD display
+  const teamPosLatLon = (team: TeamData) => {
+    // Rough approximation for Japanese Archipelago bounds for flair
+    const lat = (45 - (team.coordinates.y / 100) * 15).toFixed(2);
+    const lon = (130 + (team.coordinates.x / 100) * 15).toFixed(2);
+    return `${lat}°N ${lon}°E`;
+  };
 
   return (
     <div 
@@ -342,11 +360,11 @@ export const MapCanvasSVG: React.FC<MapCanvasSVGProps> = ({
         {(activeLayer === 'all' || activeLayer === 'hazards') && (
           <>
             {/* Hokkaido Arctic Megafauna Hazard */}
-            <circle cx="75" cy="18" r="7" fill="#ef4444" fillOpacity="0.08" stroke="#ef4444" strokeWidth="0.5" strokeDasharray="1,1" />
+            <rect x="68" y="11" width="14" height="14" fill="#ef4444" fillOpacity="0.08" stroke="#ef4444" strokeWidth="0.5" strokeDasharray="1,1" />
             {/* Vale dos Insetos Toxic Hazard */}
-            <circle cx="48" cy="65" r="5" fill="#f59e0b" fillOpacity="0.08" stroke="#f59e0b" strokeWidth="0.5" strokeDasharray="1,1" />
+            <rect x="43" y="60" width="10" height="10" fill="#f59e0b" fillOpacity="0.08" stroke="#f59e0b" strokeWidth="0.5" strokeDasharray="1,1" />
             {/* Ryūgū X-Virus Vault Hazard */}
-            <circle cx="62" cy="58" r="6" fill="#a855f7" fillOpacity="0.12" stroke="#a855f7" strokeWidth="0.5" strokeDasharray="1,1" />
+            <rect x="56" y="52" width="12" height="12" fill="#a855f7" fillOpacity="0.12" stroke="#a855f7" strokeWidth="0.5" strokeDasharray="1,1" />
           </>
         )}
 
@@ -404,8 +422,11 @@ export const MapCanvasSVG: React.FC<MapCanvasSVGProps> = ({
             >
               {/* Radar pulse for Selected, Hovered or Central Sado Hub */}
               {(isSelected || isHovered || isFuji) && (
-                <circle
-                  r={isFuji ? 7 : 5.5}
+                <rect
+                  x={isFuji ? -7 : -5.5}
+                  y={isFuji ? -7 : -5.5}
+                  width={isFuji ? 14 : 11}
+                  height={isFuji ? 14 : 11}
                   fill="none"
                   stroke={statusColor}
                   strokeWidth="0.8"
@@ -415,16 +436,22 @@ export const MapCanvasSVG: React.FC<MapCanvasSVGProps> = ({
               )}
 
               {/* Marker Base Ring */}
-              <circle
-                r={isFuji ? 4.5 : 3.8}
+              <rect
+                x={isFuji ? -4.5 : -3.8}
+                y={isFuji ? -4.5 : -3.8}
+                width={isFuji ? 9 : 7.6}
+                height={isFuji ? 9 : 7.6}
                 fill="#0f172a"
                 stroke={isSelected ? '#ffffff' : statusColor}
                 strokeWidth={isSelected ? 1.4 : 1.0}
               />
 
               {/* Inner Tactical Dot */}
-              <circle
-                r={isFuji ? 2.2 : 1.8}
+              <rect
+                x={isFuji ? -2.2 : -1.8}
+                y={isFuji ? -2.2 : -1.8}
+                width={isFuji ? 4.4 : 3.6}
+                height={isFuji ? 4.4 : 3.6}
                 fill={statusColor}
               />
 
@@ -461,11 +488,14 @@ export const MapCanvasSVG: React.FC<MapCanvasSVGProps> = ({
 
       {/* Floating Tactical HUD on Hover */}
       {hoveredTeam && (
-        <div className="absolute top-12 left-4 bg-[#090e17]/95 border border-slate-700 rounded-lg p-2.5 shadow-xl text-xs font-mono-code pointer-events-none z-20 backdrop-blur-md max-w-xs">
+        <div 
+          className="fixed bg-[#090e17]/95 border border-slate-700 rounded-lg p-2.5 shadow-xl text-xs font-mono-code pointer-events-none z-50 backdrop-blur-md max-w-xs transform -translate-x-1/2 -translate-y-[120%]"
+          style={{ left: mousePos.x, top: mousePos.y }}
+        >
           <div className="flex items-center gap-2">
             <span 
-              className="w-2.5 h-2.5 rounded-full" 
-              style={{ backgroundColor: hoveredTeam.color }} 
+              className="w-2.5 h-2.5 rounded-full animate-pulse" 
+              style={{ backgroundColor: hoveredTeam.color, boxShadow: `0 0 10px ${hoveredTeam.color}` }} 
             />
             <span className="font-bold text-white uppercase font-sans">{hoveredTeam.name}</span>
           </div>
@@ -473,8 +503,12 @@ export const MapCanvasSVG: React.FC<MapCanvasSVGProps> = ({
             <span className="text-slate-400">Comando: </span>
             <span className="text-emerald-400 font-semibold font-sans">{hoveredTeam.effectiveLeadership}</span>
           </div>
-          <div className="text-[10px] text-slate-400 mt-0.5">
-            Efetivo: <span className="text-cyan-400 font-bold">{hoveredTeam.survivalCount} Vidas</span>
+          <div className="text-[10px] text-slate-400 mt-0.5 border-t border-slate-700/50 pt-1 mt-1">
+            Efetivo Restante: <span className="text-cyan-400 font-bold">{hoveredTeam.survivalCount.toLocaleString()} Vidas</span>
+          </div>
+          <div className="text-[9px] text-slate-500 mt-0.5 uppercase tracking-widest flex items-center gap-1">
+            <Crosshair className="w-2.5 h-2.5" />
+            POS-LOCK: {teamPosLatLon(hoveredTeam)}
           </div>
         </div>
       )}

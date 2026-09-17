@@ -31,7 +31,7 @@ export const BiometricSpace3D: React.FC<BiometricSpace3DProps> = ({
   return (
     <div className="space-y-6">
       {/* Top Description Banner */}
-      <div className="bg-[#0d131f] border border-slate-800 rounded-2xl p-6 shadow-xl">
+      <div className="bg-[#030914] border border-[#0e2a4a] rounded-2xl p-6 shadow-xl">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 flex-wrap">
@@ -55,7 +55,7 @@ export const BiometricSpace3D: React.FC<BiometricSpace3DProps> = ({
 
           {/* Controls: Scope Switcher + 3D Camera Controls */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-            <div className="flex items-center gap-1 bg-[#080d16] p-1 rounded-xl border border-slate-700/80">
+            <div className="flex items-center gap-1 bg-[#020610] p-1 rounded-xl border border-[#0d223a]">
               <button
                 onClick={() => handleScopeChange('global')}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono-code font-bold transition-all cursor-pointer ${

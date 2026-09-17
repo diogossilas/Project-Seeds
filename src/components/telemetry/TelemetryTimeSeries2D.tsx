@@ -39,8 +39,8 @@ export const TelemetryTimeSeries2D: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#0d131f] border border-slate-800 rounded-2xl p-6 shadow-xl">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 pb-3 border-b border-slate-800">
+    <div className="bg-[#030914] border border-[#0e2a4a] rounded-2xl p-6 shadow-xl">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 pb-3 border-b border-[#0e2a4a]">
         <div>
           <div className="flex items-center gap-2">
             <span className="text-xs font-mono-code uppercase text-emerald-400 font-semibold">
@@ -60,7 +60,7 @@ export const TelemetryTimeSeries2D: React.FC = () => {
             className={`px-3 py-1.5 rounded-lg transition-colors ${
               activeMetric === 'cooperation'
                 ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-semibold'
-                : 'bg-slate-800/60 text-slate-400 hover:text-slate-200'
+                : 'bg-[#020610] text-slate-400 hover:text-slate-200'
             }`}
           >
             Cooperação (%)
@@ -71,7 +71,7 @@ export const TelemetryTimeSeries2D: React.FC = () => {
             className={`px-3 py-1.5 rounded-lg transition-colors ${
               activeMetric === 'radiation'
                 ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40 font-semibold'
-                : 'bg-slate-800/60 text-slate-400 hover:text-slate-200'
+                : 'bg-[#020610] text-slate-400 hover:text-slate-200'
             }`}
           >
             Radiação (%)
@@ -82,7 +82,7 @@ export const TelemetryTimeSeries2D: React.FC = () => {
             className={`px-3 py-1.5 rounded-lg transition-colors ${
               activeMetric === 'biomass'
                 ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-semibold'
-                : 'bg-slate-800/60 text-slate-400 hover:text-slate-200'
+                : 'bg-[#020610] text-slate-400 hover:text-slate-200'
             }`}
           >
             Biomassa (%)
@@ -91,7 +91,7 @@ export const TelemetryTimeSeries2D: React.FC = () => {
       </div>
 
       {/* SVG 2D Line Chart with Axes */}
-      <div className="w-full aspect-[2/1] relative bg-[#080d16] rounded-xl border border-slate-800/80 p-2">
+      <div className="w-full aspect-[2/1] relative bg-[#020610] rounded-xl border border-[#0e2a4a]/80 p-2">
         <svg viewBox={`0 0 ${chartWidth} ${chartHeight}`} className="w-full h-full select-none">
           <defs>
             <linearGradient id="metric-gradient" x1="0" y1="0" x2="0" y2="1">

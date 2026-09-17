@@ -31,9 +31,9 @@ export const QuickDossierModal: React.FC<QuickDossierModalProps> = ({ isOpen, on
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
-      <div className="bg-[#0d131f] border border-slate-700/80 rounded-2xl w-full max-w-2xl max-h-[85vh] overflow-hidden flex flex-col shadow-2xl">
+      <div className="bg-[#020713] border border-[#0e2a4a] rounded-2xl w-full max-w-2xl max-h-[85vh] overflow-hidden flex flex-col shadow-2xl">
         {/* Header */}
-        <div className="flex items-center justify-between p-5 border-b border-slate-800 bg-[#090d16]">
+        <div className="flex items-center justify-between p-5 border-b border-[#0e2a4a] bg-[#030914]">
           <div className="flex items-center gap-2.5">
             <ShieldAlert className="w-5 h-5 text-emerald-400" />
             <div>
@@ -47,7 +47,7 @@ export const QuickDossierModal: React.FC<QuickDossierModalProps> = ({ isOpen, on
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors cursor-pointer"
+            className="p-1.5 rounded-lg bg-[#050e1c] text-slate-400 hover:text-white hover:bg-[#0a1b33] transition-colors cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
@@ -55,7 +55,7 @@ export const QuickDossierModal: React.FC<QuickDossierModalProps> = ({ isOpen, on
 
         {/* Content */}
         <div className="p-6 overflow-y-auto space-y-4 text-xs">
-          <div className="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 space-y-1.5 font-mono-code text-[11px]">
+          <div className="bg-slate-900/80 p-3.5 rounded-xl border border-[#0e2a4a] space-y-1.5 font-mono-code text-[11px]">
             <div className="flex justify-between">
               <span className="text-slate-400">Classificação:</span>
               <span className="text-emerald-400 font-bold">{METADATA_ARCHIVE.classification}</span>
@@ -78,7 +78,7 @@ export const QuickDossierModal: React.FC<QuickDossierModalProps> = ({ isOpen, on
             <h4 className="font-bold text-white font-mono-code uppercase text-xs mb-1.5 text-emerald-400">
               Conclusão da Matriz Arquitetural &amp; Telemetria Global
             </h4>
-            <p className="text-slate-300 leading-relaxed bg-slate-900/40 p-3 rounded-xl border border-slate-800">
+            <p className="text-slate-300 leading-relaxed bg-slate-900/40 p-3 rounded-xl border border-[#0e2a4a]">
               O maquinário burocrático e eugenista planejado pelo antigo Estado colapsou em todas as frentes de superfície. 
               A unificação na Ilha de Sado (8ª Arca) e a correlação cruzada dos 10 complexos globais demonstram que quanto mais um núcleo dependeu de IA e automação militar (ex: Cheyenne, Qinling, Sado), maior foi a taxa de terminação preventiva e disfunção psíquica. A sobrevivência prosperou onde o saber empírico e a coesão horizontal foram preservados.
             </p>
@@ -101,7 +101,7 @@ export const QuickDossierModal: React.FC<QuickDossierModalProps> = ({ isOpen, on
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 font-mono-code text-[11px]">
               {TEAMS_DATA.map((t) => (
-                <div key={t.id} className="p-2 bg-slate-900/60 rounded-lg border border-slate-800 flex items-center justify-between">
+                <div key={t.id} className="p-2 bg-slate-900/60 rounded-lg border border-[#0e2a4a] flex items-center justify-between">
                   <span className="flex items-center gap-1.5 text-slate-300">
                     <span className="w-2 h-2 rounded-full" style={{ backgroundColor: t.color }} />
                     {t.name}
@@ -116,12 +116,12 @@ export const QuickDossierModal: React.FC<QuickDossierModalProps> = ({ isOpen, on
         </div>
 
         {/* Footer with Modular Export Service Triggers */}
-        <div className="p-4 border-t border-slate-800 bg-[#090d16] flex flex-wrap items-center justify-between gap-2">
+        <div className="p-4 border-t border-[#0e2a4a] bg-[#030914] flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2 font-mono-code text-xs">
             <button
               id="export-dossier-json-btn"
               onClick={handleDownload}
-              className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center gap-1.5 transition-colors cursor-pointer"
+              className="px-3 py-1.5 rounded-lg bg-[#050e1c] hover:bg-[#0a1b33] text-slate-200 border border-slate-700 flex items-center gap-1.5 transition-colors cursor-pointer"
             >
               <Download className="w-3.5 h-3.5 text-cyan-400" />
               <span>Baixar JSON</span>
@@ -129,7 +129,7 @@ export const QuickDossierModal: React.FC<QuickDossierModalProps> = ({ isOpen, on
             <button
               id="copy-dossier-json-btn"
               onClick={handleCopyJSON}
-              className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center gap-1.5 transition-colors cursor-pointer"
+              className="px-3 py-1.5 rounded-lg bg-[#050e1c] hover:bg-[#0a1b33] text-slate-200 border border-slate-700 flex items-center gap-1.5 transition-colors cursor-pointer"
             >
               {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-slate-400" />}
               <span>{copied ? 'Copiado!' : 'Copiar JSON'}</span>

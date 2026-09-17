@@ -16,8 +16,8 @@ export const TelemetryScatter2D: React.FC<TelemetryScatter2DProps> = ({ onSelect
   };
 
   return (
-    <div className="bg-[#0d131f] border border-slate-800 rounded-2xl p-6 shadow-xl">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-800">
+    <div className="bg-[#030914] border border-[#0e2a4a] rounded-2xl p-6 shadow-xl">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-3 border-b border-[#0e2a4a]">
         <div>
           <span className="text-xs font-mono-code uppercase text-cyan-400 font-semibold">
             CORRELAÇÃO MULTIVARIÁVEL EM EIXOS 2D (X E Y)
@@ -32,7 +32,7 @@ export const TelemetryScatter2D: React.FC<TelemetryScatter2DProps> = ({ onSelect
       </div>
 
       {/* Scatter Chart */}
-      <div className="w-full aspect-[4/3] bg-[#080d16] rounded-xl border border-slate-800/80 p-3 relative">
+      <div className="w-full aspect-[4/3] bg-[#020610] rounded-xl border border-[#0e2a4a]/80 p-3 relative">
         <svg viewBox="0 0 100 100" className="w-full h-full select-none">
           {/* Quadrant dividing lines */}
           <line x1="50" y1="10" x2="50" y2="90" stroke="#1e293b" strokeDasharray="1,1" />
@@ -124,7 +124,7 @@ export const TelemetryScatter2D: React.FC<TelemetryScatter2DProps> = ({ onSelect
 
         {/* Hover details badge */}
         {scatterHoverNode && (
-          <div className="absolute top-4 right-4 bg-slate-900/95 border border-slate-700 p-3 rounded-xl shadow-xl font-mono-code text-xs">
+          <div className="absolute top-4 right-4 bg-slate-900/95 border border-[#0e2a4a] p-3 rounded-xl shadow-xl font-mono-code text-xs">
             <div className="flex items-center gap-1.5 font-bold" style={{ color: scatterHoverNode.color }}>
               <span>{scatterHoverNode.name}</span>
             </div>

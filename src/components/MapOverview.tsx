@@ -35,11 +35,11 @@ export const MapOverview: React.FC<MapOverviewProps> = ({
   return (
     <div className="space-y-6">
       {/* Tactical Executive COP Header Bar */}
-      <div className="rounded-xl bg-[#0d1422] border border-slate-800 p-4 sm:p-5 shadow-lg">
+      <div className="bg-[#050b14] border border-[#1e293b] p-4 sm:p-5 shadow-lg">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono-code font-bold flex items-center gap-1.5">
+              <span className="px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono-code font-bold flex items-center gap-1.5">
                 <Compass className="w-3.5 h-3.5" />
                 <span>MAPA OPERACIONAL DE SITUAÇÃO (COP)</span>
               </span>
@@ -54,25 +54,25 @@ export const MapOverview: React.FC<MapOverviewProps> = ({
 
           {/* 4 Instant Visual KPI Blocks - Mobile Responsive Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
-            <div className="bg-[#090d16] border border-slate-700/80 rounded-lg p-2.5 sm:p-3">
+            <div className="bg-[#010613] border border-[#1e293b] p-2.5 sm:p-3">
               <div className="text-[10px] font-mono-code uppercase text-slate-400">Efetivo Ativo</div>
               <div className="text-xl sm:text-2xl font-bold font-mono-code text-emerald-400">29 Vidas</div>
               <div className="flex items-center gap-1 mt-1 text-[10px] text-emerald-300 font-semibold font-sans">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                <span className="w-1.5 h-1.5 bg-emerald-400" />
                 100% Unificado
               </div>
             </div>
 
-            <div className="bg-[#090d16] border border-slate-700/80 rounded-lg p-2.5 sm:p-3">
+            <div className="bg-[#010613] border border-[#1e293b] p-2.5 sm:p-3">
               <div className="text-[10px] font-mono-code uppercase text-slate-400">Ponto de Convergência</div>
               <div className="text-xl sm:text-2xl font-bold font-mono-code text-cyan-400">Ilha de Sado</div>
               <div className="flex items-center gap-1 mt-1 text-[10px] text-cyan-300 font-semibold font-sans">
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                <span className="w-1.5 h-1.5 bg-cyan-400" />
                 8ª Arca Fuji (QG)
               </div>
             </div>
 
-            <div className="bg-[#090d16] border border-slate-700/80 rounded-lg p-2.5 sm:p-3">
+            <div className="bg-[#010613] border border-[#1e293b] p-2.5 sm:p-3">
               <div className="text-[10px] font-mono-code uppercase text-slate-400">Frentes Mapeadas</div>
               <div className="text-xl sm:text-2xl font-bold font-mono-code text-slate-100">7 Setores</div>
               <div className="text-[10px] text-slate-400 mt-1 font-sans">
@@ -80,11 +80,11 @@ export const MapOverview: React.FC<MapOverviewProps> = ({
               </div>
             </div>
 
-            <div className="bg-[#090d16] border border-slate-700/80 rounded-lg p-2.5 sm:p-3">
+            <div className="bg-[#010613] border border-[#1e293b] p-2.5 sm:p-3">
               <div className="text-[10px] font-mono-code uppercase text-slate-400">Status Geral</div>
               <div className="text-xl sm:text-2xl font-bold font-mono-code text-amber-400">Estável</div>
               <div className="flex items-center gap-1 mt-1 text-[10px] text-amber-300 font-semibold font-sans">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                <span className="w-1.5 h-1.5 bg-amber-400" />
                 Ordem Estabelecida
               </div>
             </div>
@@ -112,14 +112,14 @@ export const MapOverview: React.FC<MapOverviewProps> = ({
                   key={team.id}
                   id={`chip-select-${team.id}`}
                   onClick={() => onSelectTeam(team)}
-                  className={`px-2.5 py-1 rounded-md text-xs font-mono-code flex items-center gap-1.5 whitespace-nowrap transition-all cursor-pointer border ${
+                  className={`px-2.5 py-1 text-xs font-mono-code flex items-center gap-1.5 whitespace-nowrap transition-all cursor-pointer border ${
                     isSelected
-                      ? 'bg-slate-700 text-white font-bold border-emerald-400 shadow-sm'
-                      : 'bg-slate-800/60 text-slate-300 hover:text-white hover:bg-slate-800 border-slate-700/60'
+                      ? 'bg-[#1e293b] text-white font-bold border-emerald-400 shadow-sm'
+                      : 'bg-[#010613]/60 text-slate-300 hover:text-white hover:bg-[#1e293b] border-[#1e293b]/60'
                   }`}
                 >
                   <span 
-                    className="w-2 h-2 rounded-full" 
+                    className="w-2 h-2" 
                     style={{ backgroundColor: team.color }} 
                   />
                   <span className="font-bold">[{code}]</span>
@@ -130,14 +130,14 @@ export const MapOverview: React.FC<MapOverviewProps> = ({
           </div>
 
           {/* Commander Layout Mode Selector */}
-          <div className="flex items-center gap-1 self-end md:self-auto bg-[#080d16] border border-slate-800 p-1 rounded-lg">
+          <div className="flex items-center gap-1 self-end md:self-auto bg-[#010613] border border-[#1e293b] p-1">
             <button
               onClick={() => handleLayoutChange('all')}
               title="Visualização Completa Integrada"
-              className={`px-2.5 py-1 rounded text-xs font-mono-code flex items-center gap-1.5 transition-colors cursor-pointer ${
+              className={`px-2.5 py-1 text-xs font-mono-code flex items-center gap-1.5 transition-colors cursor-pointer border ${
                 layoutMode === 'all'
-                  ? 'bg-slate-700 text-white font-bold border border-slate-600'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-slate-700 text-white font-bold border-[#334155]'
+                  : 'text-slate-400 hover:text-white border-transparent'
               }`}
             >
               <Grid className="w-3.5 h-3.5" />
@@ -147,10 +147,10 @@ export const MapOverview: React.FC<MapOverviewProps> = ({
             <button
               onClick={() => handleLayoutChange('hero-chart')}
               title="Focar no Gráfico Hero Estratégico"
-              className={`px-2.5 py-1 rounded text-xs font-mono-code flex items-center gap-1.5 transition-colors cursor-pointer ${
+              className={`px-2.5 py-1 text-xs font-mono-code flex items-center gap-1.5 transition-colors cursor-pointer border ${
                 layoutMode === 'hero-chart'
-                  ? 'bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/40'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-cyan-500/20 text-cyan-300 font-bold border-cyan-500/40'
+                  : 'text-slate-400 hover:text-white border-transparent'
               }`}
             >
               <BarChart3 className="w-3.5 h-3.5" />
@@ -160,10 +160,10 @@ export const MapOverview: React.FC<MapOverviewProps> = ({
             <button
               onClick={() => handleLayoutChange('tactical-map')}
               title="Focar no Mapa Tático e Dossiê"
-              className={`px-2.5 py-1 rounded text-xs font-mono-code flex items-center gap-1.5 transition-colors cursor-pointer ${
+              className={`px-2.5 py-1 text-xs font-mono-code flex items-center gap-1.5 transition-colors cursor-pointer border ${
                 layoutMode === 'tactical-map'
-                  ? 'bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/40'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-emerald-500/20 text-emerald-300 font-bold border-emerald-500/40'
+                  : 'text-slate-400 hover:text-white border-transparent'
               }`}
             >
               <MapIcon className="w-3.5 h-3.5" />
@@ -195,7 +195,7 @@ export const MapOverview: React.FC<MapOverviewProps> = ({
           {/* Left / Center: Interactive SVG Map with Full Zoom System (7 cols) */}
           <div className={`${
             layoutMode === 'tactical-map' ? 'lg:col-span-8' : 'lg:col-span-7'
-          } bg-[#0d131f] border border-slate-800 rounded-xl p-4 sm:p-5 relative overflow-hidden shadow-xl flex flex-col`}>
+          } bg-[#050b14] border border-[#1e293b] p-4 sm:p-5 relative overflow-hidden shadow-xl flex flex-col`}>
             <MapLayerControls 
               activeLayer={activeLayer}
               onSelectLayer={setActiveLayer}

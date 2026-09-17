@@ -46,7 +46,7 @@ export const TelemetryView: React.FC<TelemetryViewProps> = ({
   return (
     <div className="space-y-5">
       {/* Executive Command Bar for Telemetry */}
-      <div className="bg-[#0d1422] border border-slate-800 rounded-xl p-4 sm:p-5 shadow-lg">
+      <div className="bg-[#030914] border border-[#0e2a4a] rounded-xl p-4 sm:p-5 shadow-lg">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
@@ -65,7 +65,7 @@ export const TelemetryView: React.FC<TelemetryViewProps> = ({
 
           {/* 4 Instant Visual KPI Blocks */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
-            <div className="bg-[#090d16] border border-slate-700/80 rounded-lg p-2.5 sm:p-3">
+            <div className="bg-[#020610] border border-[#0d223a] rounded-lg p-2.5 sm:p-3">
               <div className="text-[10px] font-mono-code uppercase text-slate-400">Sobrevivência Global</div>
               <div className="text-xl sm:text-2xl font-bold font-mono-code text-emerald-400">82.8%</div>
               <div className="flex items-center gap-1 mt-1 text-[10px] text-emerald-300 font-semibold">
@@ -74,7 +74,7 @@ export const TelemetryView: React.FC<TelemetryViewProps> = ({
               </div>
             </div>
 
-            <div className="bg-[#090d16] border border-slate-700/80 rounded-lg p-2.5 sm:p-3">
+            <div className="bg-[#020610] border border-[#0d223a] rounded-lg p-2.5 sm:p-3">
               <div className="text-[10px] font-mono-code uppercase text-slate-400">Autonomia x Vida</div>
               <div className="text-xl sm:text-2xl font-bold font-mono-code text-cyan-400">+0.89 Corr</div>
               <div className="flex items-center gap-1 mt-1 text-[10px] text-cyan-300 font-semibold">
@@ -83,7 +83,7 @@ export const TelemetryView: React.FC<TelemetryViewProps> = ({
               </div>
             </div>
 
-            <div className="bg-[#090d16] border border-slate-700/80 rounded-lg p-2.5 sm:p-3">
+            <div className="bg-[#020610] border border-[#0d223a] rounded-lg p-2.5 sm:p-3">
               <div className="text-[10px] font-mono-code uppercase text-slate-400">Ruptura de Tutela</div>
               <div className="text-xl sm:text-2xl font-bold font-mono-code text-rose-400">100%</div>
               <div className="flex items-center gap-1 mt-1 text-[10px] text-rose-300 font-semibold">
@@ -92,7 +92,7 @@ export const TelemetryView: React.FC<TelemetryViewProps> = ({
               </div>
             </div>
 
-            <div className="bg-[#090d16] border border-slate-700/80 rounded-lg p-2.5 sm:p-3">
+            <div className="bg-[#020610] border border-[#0d223a] rounded-lg p-2.5 sm:p-3">
               <div className="text-[10px] font-mono-code uppercase text-slate-400">Convergência Tática</div>
               <div className="text-xl sm:text-2xl font-bold font-mono-code text-amber-400">Total</div>
               <div className="flex items-center gap-1 mt-1 text-[10px] text-amber-300 font-semibold">
@@ -104,7 +104,7 @@ export const TelemetryView: React.FC<TelemetryViewProps> = ({
         </div>
 
         {/* Section Navigation Tabs */}
-        <div className="mt-4 pt-3 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3">
+        <div className="mt-4 pt-3 border-t border-[#0e2a4a]/80 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
             {sections.map((sec) => {
               const Icon = sec.icon;
@@ -116,8 +116,8 @@ export const TelemetryView: React.FC<TelemetryViewProps> = ({
                   onClick={() => handleSwitchSection(sec.id)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-mono-code flex items-center gap-1.5 whitespace-nowrap transition-all cursor-pointer border ${
                     isActive
-                      ? 'bg-slate-700 text-white font-bold border-cyan-400 shadow-sm'
-                      : 'bg-slate-800/60 text-slate-300 hover:text-white hover:bg-slate-800 border-slate-700/60'
+                      ? 'bg-gradient-to-r from-cyan-950 to-sky-900/90 text-cyan-300 font-bold border-cyan-400 shadow-[0_0_12px_rgba(6,182,212,0.3)] shadow-sm'
+                      : 'bg-[#020610] text-slate-300 hover:text-white hover:bg-[#07172e] border-[#0d223a]'
                   }`}
                 >
                   <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-cyan-400' : 'text-slate-400'}`} />

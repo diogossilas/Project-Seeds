@@ -35,9 +35,9 @@ export const GlobalTelemetryScatterTrend: React.FC = () => {
   const lineSvgY2 = mapY(trendY2);
 
   return (
-    <div className="bg-[#0d131f] border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col">
+    <div className="bg-[#030914] border border-[#0e2a4a] rounded-2xl p-6 shadow-xl flex flex-col">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-[#0e2a4a]">
         <div>
           <div className="flex items-center gap-2">
             <span className="px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/30 text-[10px] font-mono-code font-bold uppercase flex items-center gap-1">
@@ -55,10 +55,10 @@ export const GlobalTelemetryScatterTrend: React.FC = () => {
 
         {/* Regression Metric Pills */}
         <div className="flex items-center gap-2 font-mono-code text-[11px] self-start sm:self-auto">
-          <div className="px-2.5 py-1 rounded bg-slate-900 border border-slate-700 text-cyan-300">
+          <div className="px-2.5 py-1 rounded bg-slate-900 border border-[#0e2a4a] text-cyan-300">
             Declive (m): <span className="font-bold text-rose-400">{regression.slope.toFixed(3)}</span>
           </div>
-          <div className="px-2.5 py-1 rounded bg-slate-900 border border-slate-700 text-cyan-300">
+          <div className="px-2.5 py-1 rounded bg-slate-900 border border-[#0e2a4a] text-cyan-300">
             R²: <span className="font-bold text-amber-400">{(regression.rSquared * 100).toFixed(1)}%</span>
           </div>
         </div>
@@ -69,7 +69,7 @@ export const GlobalTelemetryScatterTrend: React.FC = () => {
       </p>
 
       {/* SVG Scatter Plot */}
-      <div className="w-full aspect-[16/9] bg-[#070b13] rounded-xl border border-slate-800/80 p-2 relative overflow-hidden">
+      <div className="w-full aspect-[16/9] bg-[#070b13] rounded-xl border border-[#0e2a4a]/80 p-2 relative overflow-hidden">
         <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-full select-none">
           {/* Grid lines */}
           {[0, 20, 40, 60, 80, 100].map((val) => {
@@ -246,7 +246,7 @@ export const GlobalTelemetryScatterTrend: React.FC = () => {
 
         {/* Hover Information Floating Card */}
         {hoveredPoint && (
-          <div className="absolute top-3 right-3 bg-slate-900/95 border border-slate-700 p-3 rounded-xl shadow-2xl font-mono-code text-xs backdrop-blur-md animate-fade-in">
+          <div className="absolute top-3 right-3 bg-slate-900/95 border border-[#0e2a4a] p-3 rounded-xl shadow-2xl font-mono-code text-xs backdrop-blur-md animate-fade-in">
             <div className="flex items-center gap-2 font-bold text-white">
               <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: hoveredPoint.color }} />
               <span>{hoveredPoint.facilityName}</span>
@@ -262,7 +262,7 @@ export const GlobalTelemetryScatterTrend: React.FC = () => {
         )}
       </div>
 
-      <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-slate-400 font-mono-code gap-2 px-1 pt-2 border-t border-slate-800">
+      <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-slate-400 font-mono-code gap-2 px-1 pt-2 border-t border-[#0e2a4a]">
         <span className="flex items-center gap-1.5">
           <Info className="w-3.5 h-3.5 text-slate-500" /> Declive acentuadamente negativo ({regression.slope.toFixed(2)}): cada 10% de dependência tecnológica adicional resultou em perda de ~8.5% na taxa de sobrevivência aos 50 anos.
         </span>

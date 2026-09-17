@@ -100,9 +100,9 @@ export const QuintupleTelemetryConsole: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#0b101c] border border-slate-800 rounded-2xl p-4 sm:p-6 shadow-2xl space-y-6">
+    <div className="bg-[#0b101c] border border-[#0e2a4a] rounded-2xl p-4 sm:p-6 shadow-2xl space-y-6">
       {/* Console Top Header with DEFCON & Live Status */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-[#0e2a4a]">
         <div>
           <div className="flex items-center gap-2 flex-wrap">
             <span className="px-2.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs font-mono-code font-bold uppercase flex items-center gap-1.5">
@@ -126,7 +126,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
         </div>
 
         {/* Stress Testing Action Suite */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 bg-[#070b13] p-2 rounded-xl border border-slate-800 shrink-0">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 bg-[#070b13] p-2 rounded-xl border border-[#0e2a4a] shrink-0">
           <span className="text-[10px] font-mono-code text-slate-400 uppercase font-bold px-1 hidden sm:inline">
             INJEÇÃO DE TESTE:
           </span>
@@ -136,7 +136,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
               className={`px-2.5 py-1.5 rounded-lg text-xs font-mono-code font-semibold flex items-center justify-center gap-1 transition-all cursor-pointer border ${
                 stressMode === 'thermal'
                   ? 'bg-amber-500/30 text-amber-300 border-amber-500'
-                  : 'bg-slate-800 text-slate-300 hover:text-amber-400 border-slate-700'
+                  : 'bg-[#050e1c] text-slate-300 hover:text-amber-400 border-[#0e2a4a]'
               }`}
               title="Simular Sobrecarga Térmica (>88°C)"
             >
@@ -149,7 +149,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
               className={`px-2.5 py-1.5 rounded-lg text-xs font-mono-code font-semibold flex items-center justify-center gap-1 transition-all cursor-pointer border ${
                 stressMode === 'voltage'
                   ? 'bg-red-500/30 text-red-300 border-red-500'
-                  : 'bg-slate-800 text-slate-300 hover:text-red-400 border-slate-700'
+                  : 'bg-[#050e1c] text-slate-300 hover:text-red-400 border-[#0e2a4a]'
               }`}
               title="Simular Falha de Subtensão (<360V)"
             >
@@ -162,7 +162,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
               className={`px-2.5 py-1.5 rounded-lg text-xs font-mono-code font-semibold flex items-center justify-center gap-1 transition-all cursor-pointer border ${
                 stressMode === 'seismic'
                   ? 'bg-purple-500/30 text-purple-300 border-purple-500'
-                  : 'bg-slate-800 text-slate-300 hover:text-purple-400 border-slate-700'
+                  : 'bg-[#050e1c] text-slate-300 hover:text-purple-400 border-[#0e2a4a]'
               }`}
               title="Simular Abalo Sísmico e Pico Hidráulico"
             >
@@ -175,7 +175,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
               className={`px-2.5 py-1.5 rounded-lg text-xs font-mono-code font-semibold flex items-center justify-center gap-1 transition-all cursor-pointer border ${
                 stressMode === 'recovery'
                   ? 'bg-cyan-500/30 text-cyan-300 border-cyan-500'
-                  : 'bg-slate-800 text-emerald-400 hover:bg-slate-700 border-slate-700'
+                  : 'bg-[#050e1c] text-emerald-400 hover:bg-[#0a1b33] border-[#0e2a4a]'
               }`}
               title="Normalizar Parâmetros e Restaurar Regime OK"
             >
@@ -189,7 +189,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
       {/* 3. INDICADORES DE VARIAÇÃO RÁPIDA (4 BLOCOS MODULARES COM SPARKLINES SVG) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
         {/* Bloco 1: Temperatura do Núcleo */}
-        <div className="bg-[#0e1424] border border-slate-800/90 rounded-xl p-3.5 flex flex-col justify-between shadow-md relative overflow-hidden">
+        <div className="bg-[#0e1424] border border-[#0e2a4a]/90 rounded-xl p-3.5 flex flex-col justify-between shadow-md relative overflow-hidden">
           <div className="flex items-center justify-between text-xs font-mono-code text-slate-400 mb-1">
             <span className="flex items-center gap-1.5 text-amber-400 font-semibold">
               <Flame className="w-3.5 h-3.5" /> TEMP. NÚCLEO
@@ -236,7 +236,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
         </div>
 
         {/* Bloco 2: Pressão Hidráulica */}
-        <div className="bg-[#0e1424] border border-slate-800/90 rounded-xl p-3.5 flex flex-col justify-between shadow-md relative overflow-hidden">
+        <div className="bg-[#0e1424] border border-[#0e2a4a]/90 rounded-xl p-3.5 flex flex-col justify-between shadow-md relative overflow-hidden">
           <div className="flex items-center justify-between text-xs font-mono-code text-slate-400 mb-1">
             <span className="flex items-center gap-1.5 text-cyan-400 font-semibold">
               <Gauge className="w-3.5 h-3.5" /> PRESSÃO HIDRÁULICA
@@ -282,7 +282,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
         </div>
 
         {/* Bloco 3: Tensão Elétrica */}
-        <div className="bg-[#0e1424] border border-slate-800/90 rounded-xl p-3.5 flex flex-col justify-between shadow-md relative overflow-hidden">
+        <div className="bg-[#0e1424] border border-[#0e2a4a]/90 rounded-xl p-3.5 flex flex-col justify-between shadow-md relative overflow-hidden">
           <div className="flex items-center justify-between text-xs font-mono-code text-slate-400 mb-1">
             <span className="flex items-center gap-1.5 text-yellow-400 font-semibold">
               <Zap className="w-3.5 h-3.5" /> BARRAMENTO 400V
@@ -328,7 +328,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
         </div>
 
         {/* Bloco 4: Vibração Mecânica */}
-        <div className="bg-[#0e1424] border border-slate-800/90 rounded-xl p-3.5 flex flex-col justify-between shadow-md relative overflow-hidden">
+        <div className="bg-[#0e1424] border border-[#0e2a4a]/90 rounded-xl p-3.5 flex flex-col justify-between shadow-md relative overflow-hidden">
           <div className="flex items-center justify-between text-xs font-mono-code text-slate-400 mb-1">
             <span className="flex items-center gap-1.5 text-purple-400 font-semibold">
               <Activity className="w-3.5 h-3.5" /> VIBRAÇÃO MECÂNICA
@@ -375,7 +375,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
       </div>
 
       {/* Primary Sub-Views Navigation Tabs */}
-      <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+      <div className="flex items-center justify-between border-b border-[#0e2a4a] pb-2">
         <div className="flex items-center space-x-1 sm:space-x-2">
           <button
             onClick={() => {
@@ -385,7 +385,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
             className={`px-3 py-1.5 rounded-lg text-xs font-mono-code font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
               activeSubTab === 'multichannel'
                 ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/50 shadow-sm'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-[#020610]'
             }`}
           >
             <Activity className="w-3.5 h-3.5 text-emerald-400" />
@@ -400,7 +400,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
             className={`px-3 py-1.5 rounded-lg text-xs font-mono-code font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
               activeSubTab === 'states'
                 ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/50 shadow-sm'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-[#020610]'
             }`}
           >
             <Workflow className="w-3.5 h-3.5 text-cyan-400" />
@@ -415,7 +415,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
             className={`px-3 py-1.5 rounded-lg text-xs font-mono-code font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
               activeSubTab === 'heatmap'
                 ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/50 shadow-sm'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-[#020610]'
             }`}
           >
             <Layers className="w-3.5 h-3.5 text-amber-400" />
@@ -430,7 +430,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
             className={`px-3 py-1.5 rounded-lg text-xs font-mono-code font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
               activeSubTab === 'synoptic'
                 ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/50 shadow-sm'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-[#020610]'
             }`}
           >
             <Cpu className="w-3.5 h-3.5 text-purple-400" />
@@ -447,7 +447,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
           1. SÉRIE TEMPORAL MULTICANAL
          ======================================================== */}
       {activeSubTab === 'multichannel' && (
-        <div className="bg-[#080d17] border border-slate-800/80 rounded-xl p-4 space-y-4">
+        <div className="bg-[#080d17] border border-[#0e2a4a]/80 rounded-xl p-4 space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <span className="text-[10px] font-mono-code text-emerald-400 font-bold uppercase tracking-wider">
@@ -465,7 +465,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
                 className={`px-2.5 py-1 rounded transition-colors ${
                   activeChannel === 'all'
                     ? 'bg-slate-700 text-white font-bold border border-slate-600'
-                    : 'bg-slate-800/70 text-slate-400 hover:text-slate-200'
+                    : 'bg-[#050e1c]/70 text-slate-400 hover:text-slate-200'
                 }`}
               >
                 Todos (Multicanal)
@@ -475,7 +475,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
                 className={`px-2.5 py-1 rounded transition-colors ${
                   activeChannel === 'temp'
                     ? 'bg-amber-500/20 text-amber-300 font-bold border border-amber-500/50'
-                    : 'bg-slate-800/70 text-slate-400 hover:text-amber-300'
+                    : 'bg-[#050e1c]/70 text-slate-400 hover:text-amber-300'
                 }`}
               >
                 Temp (°C)
@@ -485,7 +485,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
                 className={`px-2.5 py-1 rounded transition-colors ${
                   activeChannel === 'pressure'
                     ? 'bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/50'
-                    : 'bg-slate-800/70 text-slate-400 hover:text-cyan-300'
+                    : 'bg-[#050e1c]/70 text-slate-400 hover:text-cyan-300'
                 }`}
               >
                 Pressão (bar)
@@ -495,7 +495,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
                 className={`px-2.5 py-1 rounded transition-colors ${
                   activeChannel === 'voltage'
                     ? 'bg-yellow-500/20 text-yellow-300 font-bold border border-yellow-500/50'
-                    : 'bg-slate-800/70 text-slate-400 hover:text-yellow-300'
+                    : 'bg-[#050e1c]/70 text-slate-400 hover:text-yellow-300'
                 }`}
               >
                 Tensão (V)
@@ -505,7 +505,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
                 className={`px-2.5 py-1 rounded transition-colors ${
                   activeChannel === 'vibration'
                     ? 'bg-purple-500/20 text-purple-300 font-bold border border-purple-500/50'
-                    : 'bg-slate-800/70 text-slate-400 hover:text-purple-300'
+                    : 'bg-[#050e1c]/70 text-slate-400 hover:text-purple-300'
                 }`}
               >
                 Vibração (g)
@@ -514,7 +514,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
           </div>
 
           {/* SVG Multi-trace Canvas */}
-          <div className="w-full aspect-[21/9] max-h-[340px] bg-[#05080f] rounded-xl border border-slate-800/90 p-2 relative overflow-hidden">
+          <div className="w-full aspect-[21/9] max-h-[340px] bg-[#05080f] rounded-xl border border-[#0e2a4a]/90 p-2 relative overflow-hidden">
             <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} className="w-full h-full select-none">
               {/* Grid Lines */}
               {[0, 0.25, 0.5, 0.75, 1.0].map((frac, i) => {
@@ -656,7 +656,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
           </div>
 
           {/* Trace Legend */}
-          <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-mono-code pt-2 border-t border-slate-800/80">
+          <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-mono-code pt-2 border-t border-[#0e2a4a]/80">
             <div className="flex items-center gap-4 flex-wrap">
               <span className="flex items-center gap-1.5 text-amber-400">
                 <span className="w-3 h-0.5 bg-amber-400" /> Temperatura (°C)
@@ -683,7 +683,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
           2. LINHA TEMPORAL DE ESTADOS & AUTÔMATO FINITO
          ======================================================== */}
       {activeSubTab === 'states' && (
-        <div className="bg-[#080d17] border border-slate-800/80 rounded-xl p-4 sm:p-5 space-y-5">
+        <div className="bg-[#080d17] border border-[#0e2a4a]/80 rounded-xl p-4 sm:p-5 space-y-5">
           <div>
             <span className="text-[10px] font-mono-code text-cyan-400 font-bold uppercase tracking-wider">
               CAMADA 2 • AUTÔMATO FINITO DO CICLO OPERACIONAL
@@ -704,7 +704,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
               <span className="text-emerald-400 font-bold">ESTADO ATUAL: {operationalState}</span>
             </div>
 
-            <div className="w-full h-8 rounded-lg overflow-hidden flex border border-slate-700 bg-slate-900 p-0.5 gap-0.5">
+            <div className="w-full h-8 rounded-lg overflow-hidden flex border border-[#0e2a4a] bg-slate-900 p-0.5 gap-0.5">
               {safeSegments.map((seg) => (
                 <div
                   key={seg.state}
@@ -726,7 +726,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
             {/* Segments Legend */}
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 pt-2">
               {safeSegments.map((seg) => (
-                <div key={`legend-${seg.state}`} className="p-2 rounded bg-[#0e1424] border border-slate-800 text-xs font-mono-code">
+                <div key={`legend-${seg.state}`} className="p-2 rounded bg-[#0e1424] border border-[#0e2a4a] text-xs font-mono-code">
                   <div className="flex items-center gap-1.5">
                     <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: seg.color }} />
                     <span className="font-bold text-slate-200 truncate">{seg.state}</span>
@@ -740,7 +740,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
           </div>
 
           {/* Finite State Machine Diagram (SVG Interativo) */}
-          <div className="bg-[#05080f] rounded-xl border border-slate-800 p-4">
+          <div className="bg-[#05080f] rounded-xl border border-[#0e2a4a] p-4">
             <div className="text-xs font-mono-code text-slate-400 mb-3 flex items-center justify-between">
               <span className="text-cyan-400 font-bold">TOPOLOGIA DE TRANSIÇÕES DO AUTÔMATO:</span>
               <span>ESTADO ATIVO ILUMINADO EM TEMPO REAL</span>
@@ -829,7 +829,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
           4. MATRIZ TÉRMICA (HEATMAP) DOS 12 SENSORES
          ======================================================== */}
       {activeSubTab === 'heatmap' && (
-        <div className="bg-[#080d17] border border-slate-800/80 rounded-xl p-4 sm:p-5 space-y-4">
+        <div className="bg-[#080d17] border border-[#0e2a4a]/80 rounded-xl p-4 sm:p-5 space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
               <span className="text-[10px] font-mono-code text-amber-400 font-bold uppercase tracking-wider">
@@ -858,7 +858,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
                       ? 'bg-red-500/15 border-red-500/60 shadow-lg shadow-red-500/10'
                       : isWarning
                       ? 'bg-amber-500/15 border-amber-500/60'
-                      : 'bg-[#0d1322] border-slate-800 hover:border-slate-700'
+                      : 'bg-[#0d1322] border-[#0e2a4a] hover:border-[#0e2a4a]'
                   }`}
                 >
                   <div className="flex items-center justify-between text-xs font-mono-code mb-1">
@@ -880,7 +880,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
                     {s.name}
                   </p>
 
-                  <div className="flex items-baseline justify-between mt-2 pt-2 border-t border-slate-800/80">
+                  <div className="flex items-baseline justify-between mt-2 pt-2 border-t border-[#0e2a4a]/80">
                     <span className="text-lg font-bold font-mono-code text-white">
                       {s.currentVal} <span className="text-xs font-normal text-slate-400">{s.unit}</span>
                     </span>
@@ -890,7 +890,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
                   </div>
 
                   {/* Heat gradient bar representation */}
-                  <div className="w-full h-1.5 rounded-full bg-slate-800 mt-2 overflow-hidden flex">
+                  <div className="w-full h-1.5 rounded-full bg-[#050e1c] mt-2 overflow-hidden flex">
                     {s.history.map((val, idx) => {
                       let barColor = '#10b981';
                       if (s.code === 'T-01' && val > 85) barColor = '#ef4444';
@@ -915,7 +915,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
           5. MODELO SINÓPTICO INTERATIVO
          ======================================================== */}
       {activeSubTab === 'synoptic' && (
-        <div className="bg-[#080d17] border border-slate-800/80 rounded-xl p-4 sm:p-5 space-y-4">
+        <div className="bg-[#080d17] border border-[#0e2a4a]/80 rounded-xl p-4 sm:p-5 space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <span className="text-[10px] font-mono-code text-purple-400 font-bold uppercase tracking-wider">
@@ -936,7 +936,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
             {/* Interactive SVG Synoptic Schematic */}
-            <div className="lg:col-span-8 bg-[#05080f] rounded-xl border border-slate-800 p-3 relative aspect-[16/10] overflow-hidden">
+            <div className="lg:col-span-8 bg-[#05080f] rounded-xl border border-[#0e2a4a] p-3 relative aspect-[16/10] overflow-hidden">
               <svg viewBox="0 0 600 360" className="w-full h-full select-none">
                 {/* Background bus conduit paths */}
                 <path d="M 120,110 L 300,110 L 300,250 L 120,250 Z" fill="none" stroke="#1e293b" strokeWidth="2.5" />
@@ -1012,9 +1012,9 @@ export const QuintupleTelemetryConsole: React.FC = () => {
             </div>
 
             {/* Focused Diagnostic Panel */}
-            <div className="lg:col-span-4 bg-[#0e1424] rounded-xl border border-slate-800 p-4 flex flex-col justify-between">
+            <div className="lg:col-span-4 bg-[#0e1424] rounded-xl border border-[#0e2a4a] p-4 flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+                <div className="flex items-center justify-between pb-2 border-b border-[#0e2a4a]">
                   <span className="text-xs font-mono-code text-cyan-400 font-bold">
                     DIAGNÓSTICO PONTUAL: {selectedSynopticNode.sensorCode}
                   </span>
@@ -1033,7 +1033,7 @@ export const QuintupleTelemetryConsole: React.FC = () => {
                 </div>
 
                 {matchingSensor && (
-                  <div className="mt-4 space-y-2 bg-[#070b13] p-3 rounded-lg border border-slate-800 text-xs font-mono-code">
+                  <div className="mt-4 space-y-2 bg-[#070b13] p-3 rounded-lg border border-[#0e2a4a] text-xs font-mono-code">
                     <div className="flex justify-between">
                       <span className="text-slate-400">Leitura Instantânea:</span>
                       <span className="text-white font-bold">{matchingSensor.currentVal} {matchingSensor.unit}</span>
@@ -1050,13 +1050,13 @@ export const QuintupleTelemetryConsole: React.FC = () => {
                 )}
               </div>
 
-              <div className="mt-4 pt-3 border-t border-slate-800">
+              <div className="mt-4 pt-3 border-t border-[#0e2a4a]">
                 <button
                   onClick={() => {
                     audioService.playPhaseTransition();
                     injectStress('thermal');
                   }}
-                  className="w-full py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-mono-code font-bold transition-colors cursor-pointer flex items-center justify-center gap-1.5"
+                  className="w-full py-2 rounded-lg bg-[#050e1c] hover:bg-[#0a1b33] text-slate-200 text-xs font-mono-code font-bold transition-colors cursor-pointer flex items-center justify-center gap-1.5"
                 >
                   <Flame className="w-3.5 h-3.5 text-amber-400" />
                   <span>Testar Transdutor {selectedSynopticNode.sensorCode}</span>

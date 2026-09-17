@@ -20,9 +20,9 @@ export const ArchivistPythonCodeViewer: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#0d131f] border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col">
+    <div className="bg-[#030914] border border-[#0e2a4a] rounded-2xl p-6 shadow-xl flex flex-col">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-[#0e2a4a]">
         <div>
           <div className="flex items-center gap-2">
             <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono-code font-bold uppercase flex items-center gap-1">
@@ -40,7 +40,7 @@ export const ArchivistPythonCodeViewer: React.FC = () => {
 
         <button
           onClick={handleCopy}
-          className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-mono-code flex items-center gap-1.5 transition-colors self-start sm:self-auto cursor-pointer"
+          className="px-3 py-1.5 rounded-xl bg-[#050e1c] hover:bg-[#0a1b33] text-slate-200 border border-[#0e2a4a] text-xs font-mono-code flex items-center gap-1.5 transition-colors self-start sm:self-auto cursor-pointer"
         >
           {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
           <span>{copied ? 'Copiado para o Clipboard!' : 'Copiar Código Python'}</span>
@@ -64,8 +64,8 @@ export const ArchivistPythonCodeViewer: React.FC = () => {
               }}
               className={`px-3 py-1.5 rounded-lg text-xs font-mono-code transition-all cursor-pointer border ${
                 isActive
-                  ? 'bg-slate-800 text-cyan-300 border-cyan-500/40 shadow-sm font-bold'
-                  : 'bg-slate-900/70 text-slate-400 border-slate-800 hover:text-white'
+                  ? 'bg-[#050e1c] text-cyan-300 border-cyan-500/40 shadow-sm font-bold'
+                  : 'bg-slate-900/70 text-slate-400 border-[#0e2a4a] hover:text-white'
               }`}
             >
               {s.title.split(':')[0]}
@@ -75,8 +75,8 @@ export const ArchivistPythonCodeViewer: React.FC = () => {
       </div>
 
       {/* Code Box */}
-      <div className="rounded-xl border border-slate-800 bg-[#070b13] p-4 overflow-hidden flex flex-col font-mono-code text-xs">
-        <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-800/80 text-[11px] text-slate-400">
+      <div className="rounded-xl border border-[#0e2a4a] bg-[#070b13] p-4 overflow-hidden flex flex-col font-mono-code text-xs">
+        <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#0e2a4a]/80 text-[11px] text-slate-400">
           <div className="flex items-center gap-2">
             <Code2 className="w-3.5 h-3.5 text-cyan-400" />
             <span className="font-semibold text-white">{activeScript.title}</span>

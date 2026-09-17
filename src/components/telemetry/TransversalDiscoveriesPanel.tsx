@@ -38,9 +38,9 @@ export const TransversalDiscoveriesPanel: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#0d131f] border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col">
+    <div className="bg-[#030914] border border-[#0e2a4a] rounded-2xl p-6 shadow-xl flex flex-col">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-[#0e2a4a]">
         <div>
           <div className="flex items-center gap-2">
             <span className="px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30 text-[10px] font-mono-code font-bold uppercase">
@@ -71,12 +71,12 @@ export const TransversalDiscoveriesPanel: React.FC = () => {
               onClick={() => handleSelectDiscovery(d)}
               className={`p-3 rounded-xl text-left border transition-all flex flex-col justify-between cursor-pointer ${
                 isSelected
-                  ? 'bg-slate-800/90 border-slate-600 shadow-md ring-1 ring-cyan-500/30'
-                  : 'bg-slate-900/60 border-slate-800 hover:bg-slate-850 text-slate-400'
+                  ? 'bg-[#050e1c]/90 border-slate-600 shadow-md ring-1 ring-cyan-500/30'
+                  : 'bg-slate-900/60 border-[#0e2a4a] hover:bg-slate-850 text-slate-400'
               }`}
             >
               <div className="flex items-center justify-between w-full mb-1">
-                <span className="p-1 rounded bg-slate-800/80">{getDiscoveryIcon(d.id)}</span>
+                <span className="p-1 rounded bg-[#050e1c]/80">{getDiscoveryIcon(d.id)}</span>
                 <span
                   className="text-[9px] font-mono-code font-bold uppercase px-1.5 py-0.2 rounded"
                   style={{ backgroundColor: `${d.badgeColor}20`, color: d.badgeColor }}
@@ -96,8 +96,8 @@ export const TransversalDiscoveriesPanel: React.FC = () => {
       </div>
 
       {/* Selected Discovery Detail Card */}
-      <div className="bg-[#080d16] border border-slate-800/90 rounded-xl p-4 sm:p-5 font-mono-code">
-        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 pb-3 border-b border-slate-800">
+      <div className="bg-[#020610] border border-[#0e2a4a]/90 rounded-xl p-4 sm:p-5 font-mono-code">
+        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 pb-3 border-b border-[#0e2a4a]">
           <div>
             <div className="flex items-center gap-2">
               <span
@@ -124,7 +124,7 @@ export const TransversalDiscoveriesPanel: React.FC = () => {
         </div>
 
         {/* Core Summary */}
-        <div className="my-4 p-3 rounded-lg bg-slate-900/90 border border-slate-800 text-xs text-slate-200 leading-relaxed">
+        <div className="my-4 p-3 rounded-lg bg-slate-900/90 border border-[#0e2a4a] text-xs text-slate-200 leading-relaxed">
           {activeDiscovery.correlationSummary}
         </div>
 
@@ -144,12 +144,12 @@ export const TransversalDiscoveriesPanel: React.FC = () => {
 
           {/* Metric Comparison Box */}
           {activeDiscovery.metricsComparison && (
-            <div className="lg:col-span-4 bg-slate-900/90 border border-slate-800 p-3 rounded-xl flex flex-col justify-between">
-              <div className="text-[10px] text-slate-400 uppercase font-bold text-center border-b border-slate-800 pb-1 mb-2">
+            <div className="lg:col-span-4 bg-slate-900/90 border border-[#0e2a4a] p-3 rounded-xl flex flex-col justify-between">
+              <div className="text-[10px] text-slate-400 uppercase font-bold text-center border-b border-[#0e2a4a] pb-1 mb-2">
                 {activeDiscovery.metricsComparison.unit}
               </div>
               <div className="space-y-2 text-center">
-                <div className="bg-slate-950/60 p-2 rounded border border-slate-800/80">
+                <div className="bg-slate-950/60 p-2 rounded border border-[#0e2a4a]/80">
                   <div className="text-[10px] text-slate-400 truncate">
                     {activeDiscovery.metricsComparison.labelA}
                   </div>
@@ -157,7 +157,7 @@ export const TransversalDiscoveriesPanel: React.FC = () => {
                     {activeDiscovery.metricsComparison.valueA}
                   </div>
                 </div>
-                <div className="bg-slate-950/60 p-2 rounded border border-slate-800/80">
+                <div className="bg-slate-950/60 p-2 rounded border border-[#0e2a4a]/80">
                   <div className="text-[10px] text-slate-400 truncate">
                     {activeDiscovery.metricsComparison.labelB}
                   </div>
@@ -171,7 +171,7 @@ export const TransversalDiscoveriesPanel: React.FC = () => {
         </div>
 
         {/* Investigator Note */}
-        <div className="mt-4 pt-3 border-t border-slate-800 text-xs text-slate-400 leading-relaxed italic bg-slate-900/40 p-3 rounded-lg border border-slate-800/60">
+        <div className="mt-4 pt-3 border-t border-[#0e2a4a] text-xs text-slate-400 leading-relaxed italic bg-slate-900/40 p-3 rounded-lg border border-[#0e2a4a]/60">
           <strong className="text-cyan-300 not-italic">Nota do Arquivista Metatron:</strong> "{activeDiscovery.investigatorNotes}"
         </div>
       </div>

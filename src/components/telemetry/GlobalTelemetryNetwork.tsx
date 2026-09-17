@@ -52,9 +52,9 @@ export const GlobalTelemetryNetwork: React.FC = () => {
   });
 
   return (
-    <div className="bg-[#0d131f] border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col">
+    <div className="bg-[#030914] border border-[#0e2a4a] rounded-2xl p-6 shadow-xl flex flex-col">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-[#0e2a4a]">
         <div>
           <div className="flex items-center gap-2">
             <span className="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-[10px] font-mono-code font-bold uppercase flex items-center gap-1">
@@ -77,7 +77,7 @@ export const GlobalTelemetryNetwork: React.FC = () => {
             className={`px-2.5 py-1 rounded-lg transition-colors cursor-pointer ${
               activeFilter === 'all'
                 ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold'
-                : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'
+                : 'bg-slate-900 text-slate-400 hover:text-white border border-[#0e2a4a]'
             }`}
           >
             Todas (8)
@@ -87,7 +87,7 @@ export const GlobalTelemetryNetwork: React.FC = () => {
             className={`px-2.5 py-1 rounded-lg transition-colors cursor-pointer flex items-center gap-1 ${
               activeFilter === 'radio'
                 ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-bold'
-                : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'
+                : 'bg-slate-900 text-slate-400 hover:text-white border border-[#0e2a4a]'
             }`}
           >
             <Radio className="w-3 h-3 text-cyan-400" />
@@ -98,7 +98,7 @@ export const GlobalTelemetryNetwork: React.FC = () => {
             className={`px-2.5 py-1 rounded-lg transition-colors cursor-pointer flex items-center gap-1 ${
               activeFilter === 'maritime'
                 ? 'bg-blue-500/20 text-blue-300 border border-blue-500/40 font-bold'
-                : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'
+                : 'bg-slate-900 text-slate-400 hover:text-white border border-[#0e2a4a]'
             }`}
           >
             <Anchor className="w-3 h-3 text-blue-400" />
@@ -109,7 +109,7 @@ export const GlobalTelemetryNetwork: React.FC = () => {
             className={`px-2.5 py-1 rounded-lg transition-colors cursor-pointer ${
               activeFilter === 'acoustic'
                 ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold'
-                : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'
+                : 'bg-slate-900 text-slate-400 hover:text-white border border-[#0e2a4a]'
             }`}
           >
             Acústica
@@ -122,7 +122,7 @@ export const GlobalTelemetryNetwork: React.FC = () => {
       </p>
 
       {/* Network Canvas */}
-      <div className="w-full aspect-[16/9] bg-[#070b13] rounded-xl border border-slate-800/80 relative overflow-hidden p-2">
+      <div className="w-full aspect-[16/9] bg-[#070b13] rounded-xl border border-[#0e2a4a]/80 relative overflow-hidden p-2">
         <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-full select-none">
           <defs>
             {/* Pulsing beacon marker for lunar link */}
@@ -251,7 +251,7 @@ export const GlobalTelemetryNetwork: React.FC = () => {
 
         {/* Selected Details Overlay */}
         {(selectedNode || selectedEdge) && (
-          <div className="absolute bottom-3 left-3 right-3 bg-slate-900/95 border border-slate-700/80 rounded-xl p-3.5 shadow-2xl text-xs font-mono-code flex flex-col sm:flex-row sm:items-center justify-between gap-3 animate-fade-in backdrop-blur-md">
+          <div className="absolute bottom-3 left-3 right-3 bg-slate-900/95 border border-[#0d223a] rounded-xl p-3.5 shadow-2xl text-xs font-mono-code flex flex-col sm:flex-row sm:items-center justify-between gap-3 animate-fade-in backdrop-blur-md">
             <div>
               {selectedNode ? (
                 <>
@@ -261,7 +261,7 @@ export const GlobalTelemetryNetwork: React.FC = () => {
                       style={{ backgroundColor: selectedNode.status === 'collapsed' ? '#e74c3c' : '#2ecc71' }}
                     />
                     <span className="font-bold text-white text-sm">{selectedNode.label}</span>
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">
+                    <span className="text-[10px] px-2 py-0.5 rounded bg-[#050e1c] text-slate-300">
                       {selectedNode.region}
                     </span>
                     <span
@@ -278,7 +278,7 @@ export const GlobalTelemetryNetwork: React.FC = () => {
                 <>
                   <div className="flex items-center gap-2">
                     <span className="font-bold text-cyan-300 text-sm">{selectedEdge.label}</span>
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">
+                    <span className="text-[10px] px-2 py-0.5 rounded bg-[#050e1c] text-slate-300">
                       {nodeMap[selectedEdge.source]?.node.label} ↔ {nodeMap[selectedEdge.target]?.node.label}
                     </span>
                     {selectedEdge.frequency && (
@@ -320,7 +320,7 @@ export const GlobalTelemetryNetwork: React.FC = () => {
         )}
       </div>
 
-      <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-slate-400 font-mono-code gap-2 px-1 pt-2 border-t border-slate-800">
+      <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-slate-400 font-mono-code gap-2 px-1 pt-2 border-t border-[#0e2a4a]">
         <span className="flex items-center gap-1.5">
           <Info className="w-3.5 h-3.5 text-slate-500" /> Nós em verde: refúgios terrestres integrados na Nova Terra. Nó em vermelho: Base Lunar Shackleton (extinção por asfixia).
         </span>

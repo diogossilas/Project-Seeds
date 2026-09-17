@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
-  Shield, 
   Globe2, 
   Table, 
   BarChart3, 
@@ -8,103 +7,98 @@ import {
   GitBranch, 
   Volume2, 
   VolumeX, 
-  Tv,
-  FileText,
-  Radio,
-  Sparkles
+  FileText, 
+  Menu, 
+  X, 
+  Shield, 
+  LayoutGrid,
+  BookOpen,
+  Skull,
+  Crosshair
 } from 'lucide-react';
 import { audioService } from '../services/audioService';
 
 interface NavbarProps {
-  activeTab: 'atlas' | 'table' | 'patterns' | 'telemetry' | '3d';
-  setActiveTab: (tab: 'atlas' | 'table' | 'patterns' | 'telemetry' | '3d') => void;
+  activeTab: 'atlas' | 'military-maps' | 'tactical-matrix' | 'table' | 'patterns' | 'telemetry' | '3d';
+  setActiveTab: (tab: 'atlas' | 'military-maps' | 'tactical-matrix' | 'table' | 'patterns' | 'telemetry' | '3d') => void;
   onOpenQuickDossier?: () => void;
-  presentationMode: boolean;
-  onTogglePresentationMode: () => void;
+  onOpenDocumentation?: () => void;
+  onOpenForensicModal?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ 
   activeTab, 
   setActiveTab, 
   onOpenQuickDossier,
-  presentationMode,
-  onTogglePresentationMode
+  onOpenDocumentation,
+  onOpenForensicModal,
 }) => {
-  const [audioActive, setAudioActive] = React.useState(audioService.isEnabled());
+  const [audioActive, setAudioActive] = useState(audioService.isEnabled());
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleToggleSound = () => {
     const isEnabled = audioService.toggleSound();
     setAudioActive(isEnabled);
   };
 
+  // User requested: "Mova a página 'Telemetria' para o lado do botão 'Militar'."
   const navItems = [
-    { id: 'atlas' as const, label: 'Atlas Planetário', shortLabel: 'Atlas', icon: Globe2 },
-    { id: 'table' as const, label: 'Tabela Mestra Global', shortLabel: 'Tabela', icon: Table },
-    { id: 'patterns' as const, label: 'Padrões Sistêmicos (3 Leis)', shortLabel: 'Padrões', icon: GitBranch },
+    { id: 'atlas' as const, label: 'Atlas Planetário', shortLabel: 'Atlas 2D/3D', icon: Globe2 },
+    { id: 'military-maps' as const, label: 'Mapas Militares', shortLabel: 'Militar', icon: Shield },
+    { id: 'tactical-matrix' as const, label: 'Matriz Tática U.C.', shortLabel: 'Matriz', icon: Crosshair },
     { id: 'telemetry' as const, label: 'Telemetria Ômega', shortLabel: 'Telemetria', icon: BarChart3 },
-    { id: '3d' as const, label: 'Espaço Biométrico 3D', shortLabel: '3D', icon: Box },
+    { id: 'table' as const, label: 'Cartões & Matriz', shortLabel: 'Cartões', icon: LayoutGrid },
+    { id: 'patterns' as const, label: 'Padrões Sistêmicos', shortLabel: 'Padrões', icon: GitBranch },
+    { id: '3d' as const, label: 'Espaço 3D Orbital', shortLabel: 'Espaço 3D', icon: Box },
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-800 bg-[#0b111e]/98 backdrop-blur-md transition-all">
-      {/* Tactical Status Line */}
-      <div className="bg-[#070c16] border-b border-slate-800/80 px-4 py-1.5 text-xs overflow-x-auto scrollbar-none">
-        <div className="flex items-center justify-between gap-3 min-w-max">
-          <div className="flex items-center space-x-2 sm:space-x-3 text-slate-300">
-            <span className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono-code text-[11px] font-bold tracking-wide">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              SITUAÇÃO: REDE PLANETÁRIA MONITORADA • PROTOCOLO SEEDS ATIVO
-            </span>
-            <span className="text-slate-600 hidden sm:inline">|</span>
-            <span className="text-slate-400 font-mono-code text-[11px] hidden md:inline">
-              ARQUIVO AKÁSHICO CLASSE ÔMEGA • METATRON
-            </span>
-          </div>
-
-          <div className="flex items-center space-x-3 text-[11px] font-mono-code text-slate-400">
-            <span className="flex items-center gap-1.5 text-cyan-400 font-semibold">
-              <Radio className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
-              11 FRENTES DETECTADAS (10 CONTINENTAIS + 1 LUNAR)
-            </span>
-            <span className="text-slate-600 hidden sm:inline">|</span>
-            <span className="text-emerald-400 font-bold">100% QUEDA DAS IAs</span>
-          </div>
+    <header className="sticky top-0 z-50 border-b border-[#0e2a4a] bg-[#020713]/95 backdrop-blur-md transition-all font-sans">
+      {/* Top Caliper Line */}
+      <div className="w-full bg-[#030914] border-b border-[#0d223a] px-4 py-0.5 flex items-center justify-between text-[9px] font-mono-code text-cyan-500/70 select-none">
+        <div className="flex items-center gap-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span>SISTEMA DE CARTOGRAFIA TÁTICA FUTURISTA • HUD V4.8 • MODO APRESENTAÇÃO PERMANENTE</span>
+        </div>
+        <div className="hidden sm:flex items-center gap-3">
+          <span>SINC-ORBITAL: ATIVO</span>
+          <span>DEFCON 2</span>
+          <span>MGRS: 22L HJ 8920 4512</span>
         </div>
       </div>
 
-      {/* Main Command Navigation Deck */}
-      <div className={`w-full mx-auto px-4 sm:px-6 lg:px-8 transition-all ${
-        presentationMode ? 'max-w-[98%]' : 'max-w-7xl'
-      }`}>
+      {/* Main Command Navigation Deck (Permanently in Presentation Screen Width) */}
+      <div className="w-full mx-auto px-3 sm:px-5 lg:px-6 max-w-[98%]">
         <div className="flex items-center justify-between py-2 sm:py-2.5 gap-2 sm:gap-4">
+          
           {/* Logo / Command Title */}
           <div 
-            className="flex items-center space-x-2.5 cursor-pointer select-none shrink-0" 
+            className="flex items-center space-x-2.5 cursor-pointer select-none shrink-0 group" 
             onClick={() => {
               audioService.playNodeSelect();
               setActiveTab('atlas');
             }}
           >
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-slate-800/90 border border-emerald-500/40 flex items-center justify-center shadow-md">
-              <Globe2 className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400" />
+            <div className="w-8 h-8 sm:w-9 sm:h-9 bg-[#030a17] border border-cyan-500/50 flex items-center justify-center rounded-lg shadow-[0_0_12px_rgba(6,182,212,0.25)] group-hover:border-cyan-400 transition-colors">
+              <Globe2 className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
             </div>
             <div>
               <div className="flex items-center gap-1.5">
                 <span className="text-xs sm:text-sm md:text-base font-bold tracking-tight text-white font-sans">
                   PROJETO SEEDS
                 </span>
-                <span className="px-1.5 py-0.2 rounded text-[10px] font-mono-code bg-slate-800 text-emerald-400 border border-emerald-500/40 font-bold">
+                <span className="px-1.5 py-0.2 text-[10px] font-mono-code bg-cyan-950/80 text-cyan-300 border border-cyan-500/40 rounded font-bold">
                   GLOBAL ÔMEGA
                 </span>
               </div>
-              <p className="text-[10px] text-slate-400 font-mono-code hidden sm:block">
-                Mapeamento Planetário, Biomas de Ruptura &amp; Sucessão
+              <p className="text-[10px] font-mono-code text-slate-400 hidden sm:block">
+                CENTRAL DE COMANDO &amp; TELEMETRIA AKÁSHICA
               </p>
             </div>
           </div>
 
-          {/* Navigation Tabs */}
-          <nav className="flex items-center space-x-1 sm:space-x-1.5 overflow-x-auto py-1 scrollbar-none max-w-full">
+          {/* Desktop Navigation Tabs */}
+          <nav className="hidden md:flex items-center space-x-1 sm:space-x-1.5 overflow-x-auto py-1 scrollbar-none max-w-full">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = activeTab === item.id;
@@ -116,46 +110,56 @@ export const Navbar: React.FC<NavbarProps> = ({
                     audioService.playNodeSelect();
                     setActiveTab(item.id);
                   }}
-                  className={`relative px-2 sm:px-3 py-1.5 rounded-lg text-xs font-medium font-sans transition-all duration-150 flex items-center gap-1.5 whitespace-nowrap cursor-pointer ${
+                  className={`relative px-2.5 sm:px-3 py-1.5 text-xs font-mono-code font-bold transition-all duration-150 flex items-center gap-1.5 whitespace-nowrap cursor-pointer rounded-lg border ${
                     isActive
-                      ? 'bg-emerald-500/20 text-emerald-200 border border-emerald-500/50 shadow-sm font-semibold'
-                      : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/70 border border-transparent'
+                      ? 'bg-gradient-to-r from-cyan-950 to-sky-900/90 text-cyan-200 border-cyan-400 shadow-[0_0_12px_rgba(6,182,212,0.3)]'
+                      : 'text-slate-400 hover:text-slate-100 hover:bg-[#061426] border-transparent'
                   }`}
                 >
-                  <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isActive ? 'text-emerald-400' : 'text-slate-400'}`} />
-                  <span className="hidden md:inline">{item.label}</span>
-                  <span className="md:hidden">{item.shortLabel}</span>
+                  <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isActive ? 'text-cyan-400' : 'text-slate-400'}`} />
+                  <span className="hidden lg:inline">{item.label}</span>
+                  <span className="hidden md:inline lg:hidden">{item.shortLabel}</span>
                   {isActive && (
-                    <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-emerald-400 rounded-full" />
+                    <span className="absolute -bottom-[2px] left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-cyan-400 shadow-[0_0_6px_rgba(6,182,212,0.8)]" />
                   )}
                 </button>
               );
             })}
           </nav>
 
-          {/* Tactical Presentation Actions */}
+          {/* Tactical Action Triggers: Forensic Modal, Documentation, SITREP & Audio */}
           <div className="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
-            {/* Presentation Mode Button */}
-            <button
-              id="presentation-mode-toggle-btn"
-              onClick={() => {
-                audioService.playPhaseTransition();
-                onTogglePresentationMode();
-              }}
-              title={presentationMode ? "Sair do Modo Apresentação" : "Ativar Modo Apresentação (Briefing de Comando)"}
-              className={`flex items-center gap-1.5 px-2 sm:px-3 py-1.5 rounded-lg text-xs font-mono-code font-semibold transition-all cursor-pointer border ${
-                presentationMode
-                  ? 'bg-amber-500/20 text-amber-300 border-amber-500/60 shadow-lg shadow-amber-500/10'
-                  : 'bg-slate-800/80 text-slate-300 hover:text-amber-300 hover:border-amber-500/40 border-slate-700'
-              }`}
-            >
-              <Tv className={`w-3.5 h-3.5 ${presentationMode ? 'text-amber-400' : 'text-slate-400'}`} />
-              <span className="hidden lg:inline">
-                {presentationMode ? 'BRIEFING ATIVO' : 'APRESENTAÇÃO'}
-              </span>
-            </button>
+            {/* Forensic Seeds Failure Investigation Modal Button */}
+            {onOpenForensicModal && (
+              <button
+                onClick={() => {
+                  audioService.playAlert();
+                  onOpenForensicModal();
+                }}
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-mono-code font-bold bg-rose-950/80 hover:bg-rose-900 text-rose-200 border border-rose-500/50 shadow-[0_0_10px_rgba(244,63,94,0.2)] cursor-pointer transition-colors"
+                title="Abrir Relatório Forense de Causas de Não-Sobrevivência & Probabilidade"
+              >
+                <Skull className="w-3.5 h-3.5 text-rose-400" />
+                <span className="hidden xl:inline">RELATÓRIO FORENSE</span>
+              </button>
+            )}
 
-            {/* SITREP Dossier */}
+            {/* System Documentation Modal Button */}
+            {onOpenDocumentation && (
+              <button
+                onClick={() => {
+                  audioService.playNodeSelect();
+                  onOpenDocumentation();
+                }}
+                className="flex items-center gap-1.5 px-2.5 py-1.5 bg-[#030914] hover:bg-[#07172e] text-cyan-300 border border-cyan-500/40 rounded-lg text-xs font-mono-code transition-colors cursor-pointer"
+                title="Abrir Manual de Operações e Documentação Akáshica"
+              >
+                <BookOpen className="w-3.5 h-3.5 text-cyan-400" />
+                <span className="hidden xl:inline">DOCUMENTAÇÃO</span>
+              </button>
+            )}
+
+            {/* SITREP Quick Dossier */}
             {onOpenQuickDossier && (
               <button
                 id="quick-dossier-btn"
@@ -163,7 +167,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   audioService.playNodeSelect();
                   onOpenQuickDossier();
                 }}
-                className="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs font-mono-code transition-colors cursor-pointer"
+                className="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 bg-[#030914] hover:bg-[#07172e] text-slate-300 border border-[#0e2a4a] rounded-lg text-xs font-mono-code transition-colors cursor-pointer"
                 title="Relatório de Situação das Forças (SITREP)"
               >
                 <FileText className="w-3.5 h-3.5 text-cyan-400" />
@@ -171,19 +175,105 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
             )}
 
-            {/* Audio Toggle */}
+            {/* Audio Feedback Toggle */}
             <button
-              id="audio-telemetry-btn"
               onClick={handleToggleSound}
-              title={audioActive ? "Desativar Áudio Tático" : "Ativar Áudio Tático"}
-              className="p-1.5 sm:p-2 rounded-lg bg-slate-800/80 border border-slate-700 text-slate-400 hover:text-emerald-400 hover:border-emerald-500/40 transition-colors cursor-pointer"
+              className="p-2 bg-[#030914] hover:bg-[#07172e] border border-[#0e2a4a] text-slate-300 rounded-lg cursor-pointer transition-colors"
+              title={audioActive ? 'Desativar Sons Táticos' : 'Ativar Sons Táticos'}
             >
-              {audioActive ? <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" /> : <VolumeX className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
+              {audioActive ? (
+                <Volume2 className="w-4 h-4 text-emerald-400" />
+              ) : (
+                <VolumeX className="w-4 h-4 text-slate-500" />
+              )}
+            </button>
+
+            {/* Mobile Menu Hamburger Toggle */}
+            <button 
+              className="md:hidden p-2 bg-[#030914] border border-[#0e2a4a] text-cyan-400 rounded-lg cursor-pointer"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
+        
+        {/* Mobile Hamburger Drawer Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden py-4 border-t border-[#0e2a4a] space-y-3 animate-in fade-in">
+            <nav className="flex flex-col space-y-1.5">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = activeTab === item.id;
+                return (
+                  <button
+                    key={`mobile-${item.id}`}
+                    onClick={() => {
+                      audioService.playNodeSelect();
+                      setActiveTab(item.id);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className={`px-4 py-2.5 text-xs font-mono-code font-bold flex items-center justify-between rounded-lg border transition-colors ${
+                      isActive
+                        ? 'bg-cyan-950 text-cyan-300 border-cyan-400'
+                        : 'text-slate-300 bg-[#030914] border-[#0e2a4a] hover:bg-[#081b36]'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <Icon className={`w-4 h-4 ${isActive ? 'text-cyan-400' : 'text-slate-400'}`} />
+                      <span>{item.label}</span>
+                    </div>
+                  </button>
+                );
+              })}
+            </nav>
+
+            <div className="pt-2 flex flex-col space-y-2">
+              {onOpenForensicModal && (
+                <button
+                  onClick={() => {
+                    audioService.playAlert();
+                    onOpenForensicModal();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="flex justify-center items-center gap-2 px-4 py-2.5 bg-rose-950/80 text-rose-200 border border-rose-500/50 text-xs font-mono-code font-bold rounded-lg"
+                >
+                  <Skull className="w-4 h-4 text-rose-400" />
+                  <span>RELATÓRIO FORENSE DE QUEDA</span>
+                </button>
+              )}
+
+              {onOpenDocumentation && (
+                <button
+                  onClick={() => {
+                    audioService.playNodeSelect();
+                    onOpenDocumentation();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="flex justify-center items-center gap-2 px-4 py-2.5 bg-[#030914] text-cyan-300 border border-cyan-500/40 text-xs font-mono-code font-bold rounded-lg"
+                >
+                  <BookOpen className="w-4 h-4 text-cyan-400" />
+                  <span>DOCUMENTAÇÃO DO SISTEMA</span>
+                </button>
+              )}
+
+              {onOpenQuickDossier && (
+                <button
+                  onClick={() => {
+                    audioService.playNodeSelect();
+                    onOpenQuickDossier();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="flex justify-center items-center gap-2 px-4 py-2.5 bg-[#030914] text-slate-300 border border-[#0e2a4a] text-xs font-mono-code rounded-lg"
+                >
+                  <FileText className="w-4 h-4 text-cyan-400" />
+                  <span>SITREP DOSSIER</span>
+                </button>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );
 };
-

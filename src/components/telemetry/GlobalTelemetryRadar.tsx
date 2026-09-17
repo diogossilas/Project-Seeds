@@ -44,9 +44,9 @@ export const GlobalTelemetryRadar: React.FC = () => {
   const levels = [2, 4, 6, 8, 10];
 
   return (
-    <div className="bg-[#0d131f] border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col">
+    <div className="bg-[#030914] border border-[#0e2a4a] rounded-2xl p-6 shadow-xl flex flex-col">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-[#0e2a4a]">
         <div>
           <div className="flex items-center gap-2">
             <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono-code font-bold uppercase flex items-center gap-1">
@@ -74,7 +74,7 @@ export const GlobalTelemetryRadar: React.FC = () => {
                 className={`px-3 py-1.5 rounded-xl text-xs font-mono-code flex items-center gap-2 transition-all border cursor-pointer ${
                   isActive
                     ? 'text-white border-slate-600 shadow-md'
-                    : 'text-slate-500 bg-slate-900/60 border-slate-800 hover:text-slate-300'
+                    : 'text-slate-500 bg-slate-900/60 border-[#0e2a4a] hover:text-slate-300'
                 }`}
                 style={{
                   backgroundColor: isActive ? `${profile.color}25` : undefined,
@@ -100,7 +100,7 @@ export const GlobalTelemetryRadar: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
         {/* SVG Radar Chart */}
         <div className="lg:col-span-7 flex justify-center">
-          <div className="w-full max-w-[420px] aspect-square bg-[#070b13] rounded-2xl border border-slate-800/80 p-2 relative flex items-center justify-center">
+          <div className="w-full max-w-[420px] aspect-square bg-[#070b13] rounded-2xl border border-[#0e2a4a]/80 p-2 relative flex items-center justify-center">
             <svg viewBox={`0 0 ${size} ${size}`} className="w-full h-full select-none">
               {/* Concentric grid polygons */}
               {levels.map((level) => {
@@ -231,8 +231,8 @@ export const GlobalTelemetryRadar: React.FC = () => {
                 key={profile.id}
                 className={`p-3.5 rounded-xl border transition-all ${
                   isActive
-                    ? 'bg-slate-900/80 border-slate-700 shadow-md'
-                    : 'bg-slate-950/40 border-slate-800/60 opacity-50'
+                    ? 'bg-slate-900/80 border-[#0e2a4a] shadow-md'
+                    : 'bg-slate-950/40 border-[#0e2a4a]/60 opacity-50'
                 }`}
               >
                 <div className="flex items-center justify-between">
@@ -248,7 +248,7 @@ export const GlobalTelemetryRadar: React.FC = () => {
                 </p>
 
                 {isActive && (
-                  <div className="grid grid-cols-5 gap-1.5 mt-2.5 pt-2 border-t border-slate-800/80 text-[10px] text-center">
+                  <div className="grid grid-cols-5 gap-1.5 mt-2.5 pt-2 border-t border-[#0e2a4a]/80 text-[10px] text-center">
                     <div>
                       <div className="text-slate-400 truncate">Técnica</div>
                       <div className="font-bold text-slate-200 mt-0.5">{profile.metrics.technicalMastery}/10</div>
@@ -277,7 +277,7 @@ export const GlobalTelemetryRadar: React.FC = () => {
         </div>
       </div>
 
-      <div className="mt-4 flex items-center justify-between text-xs text-slate-400 font-mono-code px-1 pt-2 border-t border-slate-800">
+      <div className="mt-4 flex items-center justify-between text-xs text-slate-400 font-mono-code px-1 pt-2 border-t border-[#0e2a4a]">
         <span className="flex items-center gap-1.5">
           <Info className="w-3.5 h-3.5 text-slate-500" /> A Colônia Lunar exibe máxima perfeição técnica (10), mas colapso biológico imediato (1) e psíquico (2).
         </span>

@@ -89,6 +89,32 @@ class TelemetryAudioService {
     }
   }
 
+  public playAlert() {
+    if (!this.soundEnabled) return;
+    try {
+      const ctx = this.ensureCtx();
+      if (!ctx) return;
+
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(660, ctx.currentTime);
+      osc.frequency.setValueAtTime(440, ctx.currentTime + 0.08);
+
+      gain.gain.setValueAtTime(0.04, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.16);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start();
+      osc.stop(ctx.currentTime + 0.16);
+    } catch {
+      // Fallback
+    }
+  }
+
   public playHydrogenBeacon(callback?: () => void) {
     if (!this.soundEnabled) {
       if (callback) callback();
