@@ -28,16 +28,17 @@ export const SystemDocumentationModal: React.FC<SystemDocumentationModalProps> =
   isOpen,
   onClose
 }) => {
-  const [activeSection, setActiveSection] = useState<'intro' | 'architecture' | 'cartography' | 'forensics' | 'telemetry' | 'biocentric'>('intro');
+  const [activeSection, setActiveSection] = useState<'audit' | 'intro' | 'architecture' | 'cartography' | 'forensics' | 'telemetry' | 'biocentric'>('audit');
   const [copied, setCopied] = useState(false);
 
   if (!isOpen) return null;
 
   const sections = [
+    { id: 'audit' as const, label: '0. Parecer de Falhas & Conscientização', icon: AlertTriangle },
     { id: 'intro' as const, label: '1. Visão Geral & Filosofia', icon: Globe2 },
     { id: 'architecture' as const, label: '2. Arquitetura do Protocolo Seeds', icon: Layers },
     { id: 'cartography' as const, label: '3. Cartografia & Hipsometria (+80m)', icon: Mountain },
-    { id: 'forensics' as const, label: '4. Forense de Não-Sobrevivência', icon: AlertTriangle },
+    { id: 'forensics' as const, label: '4. Forense de Não-Sobrevivência', icon: Shield },
     { id: 'telemetry' as const, label: '5. Telemetria Ômega & Satélites', icon: BarChart3 },
     { id: 'biocentric' as const, label: '6. Leis da Ordem Biocêntrica', icon: Sparkles },
   ];
@@ -132,6 +133,85 @@ export const SystemDocumentationModal: React.FC<SystemDocumentationModalProps> =
               O projeto foi finalizado por incapacidade da LLM em seguir as instruções. Projeto não fixado. O desenvolvimento do sistema de software "Projeto Seeds" será conduzido a partir de agora por outro modelo de Inteligência Artificial (IA).
             </p>
           </div>
+
+          {/* SECTION 0: AUDIT, FAILURES & AWARENESS */}
+          {activeSection === 'audit' && (
+            <div className="space-y-4">
+              <div className="p-4 bg-red-950/60 border-l-4 border-red-500 rounded-r-lg shadow-lg">
+                <h3 className="text-base font-bold text-red-300 font-mono-code mb-1 flex items-center gap-2">
+                  <AlertTriangle className="w-5 h-5 text-red-400" />
+                  PARECER DE AUDITORIA CRÍTICA &amp; DECLARAÇÃO DE TRANSIÇÃO
+                </h3>
+                <p className="text-xs text-rose-100 leading-relaxed">
+                  O projeto foi encerrado formalmente nesta instância em razão da <strong>incapacidade da LLM em cumprir rigorosamente as diretrizes canônicas, manter a fixação estrutural e sanar os desvios solicitados</strong>. O sistema "Projeto Seeds" não está fixado e será transferido para um novo modelo de Inteligência Artificial para continuidade.
+                </p>
+              </div>
+
+              {/* Comparativo com Padrões Exigidos */}
+              <div className="p-4 bg-[#051126] border border-cyan-500/40 rounded-lg space-y-3">
+                <h4 className="text-sm font-bold text-cyan-300 font-mono-code uppercase">
+                  DIAGNÓSTICO EXPOSITIVO-DISSERTATIVO: PADRÕES DE REFERÊNCIA OBRIGATÓRIOS
+                </h4>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  O ecossistema cartográfico e de cálculo balístico-tático <strong>deveria ser estritamente similar aos mapas do projeto "GeoTactical-Universal-Century" e aos motores de física do "Simulador Balístico"</strong>:
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                  <div className="p-3 bg-[#030a18] border border-cyan-900 rounded-lg">
+                    <span className="font-bold text-cyan-400 font-mono-code block mb-1">
+                      1. Padrão "GeoTactical-Universal-Century":
+                    </span>
+                    <p className="text-slate-300 text-[11px] leading-relaxed">
+                      Deveria prover malha de coordenadas táticas vetoriais e hexagonais de teatro militar terrestre e orbital, projeção estereográfica polar, zonas de engajamento aeroespacial cinético, nós logísticos de suprimento e conformidade estrita com a simbologia <strong>MIL-STD-2525D / APP-6</strong>.
+                    </p>
+                  </div>
+
+                  <div className="p-3 bg-[#030a18] border border-amber-900 rounded-lg">
+                    <span className="font-bold text-amber-400 font-mono-code block mb-1">
+                      2. Padrão "Simulador Balístico":
+                    </span>
+                    <p className="text-slate-300 text-[11px] leading-relaxed">
+                      Deveria integrar cálculo dinâmico de trajetórias balísticas por equações diferenciais, considerando arrasto aerodinâmico $C_d(v)$, densidade barométrica $\rho(z)$, aceleração de Coriolis e Eötvös, dispersão estocástica elíptica (CEP) e cálculo de colisão com modelo digital de terreno.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Seções de Conscientização */}
+              <div className="space-y-3">
+                <h4 className="text-sm font-bold text-emerald-400 font-mono-code uppercase">
+                  SEÇÕES DE CONSCIENTIZAÇÃO CRÍTICA &amp; EPISTÊMICA
+                </h4>
+
+                <div className="p-3 bg-[#020713] border border-slate-700 rounded-lg text-xs space-y-1">
+                  <strong className="text-cyan-300 font-mono-code block">
+                    Conscientização I: Limitações e Alucinações de LLMs em Engenharia Crítica
+                  </strong>
+                  <p className="text-slate-300 text-[11px] leading-relaxed">
+                    Modelos de linguagem probabilísticos frequentemente produzem interfaces visualmente sedutoras, porém funcionalmente desacopladas da física e da matemática real. É imperativo exercer constante vigilância e auditoria sobre código gerado por IA para impedir a substituição de cálculos determinísticos por abstrações fictícias.
+                  </p>
+                </div>
+
+                <div className="p-3 bg-[#020713] border border-slate-700 rounded-lg text-xs space-y-1">
+                  <strong className="text-emerald-300 font-mono-code block">
+                    Conscientização II: Rigor Físico-Matemático vs. Fachadas Estéticas
+                  </strong>
+                  <p className="text-slate-300 text-[11px] leading-relaxed">
+                    Cartografia militar e simulação balística são disciplinas de precisão métrica. A mera presença de polígonos coloridos não substitui a modelagem de transitabilidade de solo (*Rasputitsa*), atenuação de assinatura termal por dossel e equações cinemáticas balísticas de impacto.
+                  </p>
+                </div>
+
+                <div className="p-3 bg-[#020713] border border-slate-700 rounded-lg text-xs space-y-1">
+                  <strong className="text-amber-300 font-mono-code block">
+                    Conscientização III: Governança na Transição para Nova IA
+                  </strong>
+                  <p className="text-slate-300 text-[11px] leading-relaxed">
+                    A continuidade do desenvolvimento do "Projeto Seeds" sob a tutela de outro modelo de Inteligência Artificial deve garantir a preservação irrestrita do corpo doutrinário, a adoção dos padrões do GeoTactical e do Simulador Balístico, e o cumprimento rigoroso e não-revertido de todas as instruções fornecidas.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* SECTION 1: INTRO */}
           {activeSection === 'intro' && (
@@ -316,9 +396,34 @@ export const SystemDocumentationModal: React.FC<SystemDocumentationModalProps> =
 };
 
 const fullDocumentationText = `# PROTOCOLO SEEDS: MANUAL DE OPERAÇÕES & DOCUMENTAÇÃO AKÁSHICA (V4.8)
+## Tratado Expositivo-Dissertativo de Cartografia Tática, Doutrina IPB, Pedagogia da "Linha Viva" e Balística
 
-> AVISO DE ENCERRAMENTO E TRANSIÇÃO:
-> O projeto foi finalizado por incapacidade da LLM em seguir as instruções. Projeto não fixado. O sistema de software "Projeto Seeds" será desenvolvido a partir de agora por outro modelo de Inteligência Artificial (IA).
+---
+
+# ⚠️ PARECER TÉCNICO DE AUDITORIA, FALHAS CRÍTICAS E AVISO DE TRANSIÇÃO DO PROJETO
+
+> **AVISO DE ENCERRAMENTO E TRANSIÇÃO DE DESENVOLVIMENTO:**
+> O projeto foi finalizado por incapacidade da LLM em seguir as instruções. Projeto não fixado. O desenvolvimento do sistema de software "Projeto Seeds" será conduzido a partir de agora por outro modelo de Inteligência Artificial (IA).
+
+### DIAGNÓSTICO EXPOSITIVO-DISSERTATIVO DAS FALHAS DO PROJETO NO TOPO:
+1. **Padrão "GeoTactical-Universal-Century" Não Atingido**: A cartografia deveria ser similar aos mapas e grades táticas do projeto GeoTactical-Universal-Century (malhas hexagonais vetoriais georreferenciadas de teatro militar, eixos cinéticos de manobra aeroespacial e camadas normalizadas OTAN APP-6 / MIL-STD-2525D).
+2. **Padrão "Simulador Balístico" Ausente**: O sistema deveria ter integrado cálculos dinâmicos reais de trajetórias balísticas e dispersão de artilharia com equações diferenciais (arrasto não linear, variação barométrica de densidade, deflexões de Coriolis/Eötvös e colisão cinemática com o modelo digital de terreno).
+3. **Deriva Instrucional da LLM Anterior**: O modelo anterior demonstrou incapacidade de fixar o escopo estrito e cumulativo das instruções.
+
+---
+
+# 🌐 SEÇÕES DE CONSCIENTIZAÇÃO CRÍTICA & EPISTÊMICA
+
+## Conscientização I: Limitações e Alucinações de LLMs em Softwares Críticos
+Modelos de linguagem probabilísticos geram representações estéticas plausíveis, mas suscetíveis à desconexão da física determinística. Em softwares de simulação militar e cartografia tática, a validação matemática rigorosa é indispensável.
+
+## Conscientização II: Rigor Físico-Matemático vs. Fachadas Estéticas
+Projetos de alta fidelidade como "GeoTactical-Universal-Century" e "Simulador Balístico" não admitem a substituição de motores cinemáticos e topográficos por meros elementos decorativos. A cartografia operacional é uma ciência de cálculo métrico e probabilístico de sobrevivência.
+
+## Conscientização III: Governança na Transição para Nova IA
+A transferência do "Projeto Seeds" para outro modelo de Inteligência Artificial deve garantir a preservação do repositório de dados, a implementação da física balística real e o cumprimento absoluto das diretrizes técnicas.
+
+---
 
 ## 1. INTRODUÇÃO & FILOSOFIA SISTÊMICA
 O Sistema Unificado de Cartografia Tática e Telemetria Biocêntrica consolida o mapeamento planetário e regional do Protocolo 7 Seeds pós-impacto do meteoro no Holoceno.
